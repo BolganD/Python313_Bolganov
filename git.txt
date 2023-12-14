@@ -9,3 +9,13 @@ git add -A
 	-A, -all - все файлы, которые находятся в папке и во всех подпапках
 	main.py - один файл
 	. - добавляет все файлы из текущей дериктории
+
+git config --global user.name 'Cвоё имя'
+git config --global user.email 'Свой эмайл'
+git commit -m "first commit" - создание контрольной точки
+
+text.txt
+folder
+	test.txt
+
+.gitignore
