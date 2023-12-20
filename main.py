@@ -1518,3 +1518,4 @@ from random import randint
 #         city_name, city_population = city
 #         print("\tГород:", city_name, "| Население =", city_population)
 print("Внесены изменения")
+
