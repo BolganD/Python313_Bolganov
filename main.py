@@ -1517,4 +1517,6 @@ from random import randint
 #     for city in country_city:
 #         city_name, city_population = city
 #         print("\tГород:", city_name, "| Население =", city_population)
-print("Внесены изменения")
+# print("Внесены изменения")
+
+print("Клонированный репозиторий")
