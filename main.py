@@ -1479,9 +1479,9 @@ from random import randint
 # print(t, id(t))
 
 # t = (1, 2, 3)
-# # x = t[0]
-# # y = t[1]
-# # z = t[2]
+# x = t[0]
+# y = t[1]
+# z = t[2]
 # x, y, z = t
 # print(x, y, z)
 
@@ -1504,17 +1504,17 @@ from random import randint
 # print(ptl1)
 # del ptl1
 
-countries = (
-    ("Германия", 80.2, (("Гамбург", 3.326), ("Берлин", 1.718))),
-    ("Франция", 66, (("Париж", 2.2), ("Марсель", 1.43))),
-)
-print(countries, end="\n\n")
-
-for country in countries:
-    country_name, country_population, country_city = country
-
-    print("\nСтрана:", country_name, "| Население =", country_population)
-    for city in country_city:
-        city_name, city_population = city
-        print("\tГород:", city_name, "| Население =", city_population)
-
+# countries = (
+#     ("Германия", 80.2, (("Гамбург", 3.326), ("Берлин", 1.718))),
+#     ("Франция", 66, (("Париж", 2.2), ("Марсель", 1.43))),
+# )
+# print(countries, end="\n\n")
+#
+# for country in countries:
+#     country_name, country_population, country_city = country
+#
+#     print("\nСтрана:", country_name, "| Население =", country_population)
+#     for city in country_city:
+#         city_name, city_population = city
+#         print("\tГород:", city_name, "| Население =", city_population)
+print("Внесены изменения")

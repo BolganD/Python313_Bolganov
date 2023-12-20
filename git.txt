@@ -1,3 +1,5 @@
+Токен Desktop - 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
+
 git --version
 git --help
 
@@ -19,3 +21,23 @@ folder
 	test.txt
 
 .gitignore
+
+
+git branch  - посмотреть на какой ветке находимся, добавить ветку
+git branch -D - удаление ветки
+git branch readme
+git checkout reame - перейти на ветку (имя ветки)
+
+
+readme.md - (md) для репозиториев
+
+git merge readme - слияние веток readme с веткой master
+
+
+
+Win + R => control
+https://github.com
+ИМЯЯ ПОЛЬЗОВАТЕЛЯ
+ТОКЕН
+
+git remote add origin https://github.com/BolganD/Python313_Bolganov.git
