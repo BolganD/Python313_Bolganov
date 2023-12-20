@@ -1174,7 +1174,7 @@ locale.setlocale(locale.LC_ALL, "ru")
 
 
 # seconds = time.time()
-# print('Кол-во секунд:', seconds)
+# print('Кол-во секунд:', seconds
 #
 # locale_time = time.ctime(130188452)
 # print("Местное время:", locale_time)
@@ -1517,5 +1517,133 @@ from random import randint
 #     for city in country_city:
 #         city_name, city_population = city
 #         print("\tГород:", city_name, "| Население =", city_population)
-print("Внесены изменения")
+# print("Внесены изменения")
+# print("Клонированный репозиторий")
 
+
+# Множества (set {})
+
+# s = {'banana', 'apple', 'orange', 'banana', 'apple'}
+# print(s)
+# print(type(s))
+# print(len(s))
+
+# c = ('red', 'blue', 'green', 'red')
+#
+# a = set(c)
+# print(a, type(a))
+
+# mas = [1, 2, 3, 4, 5, 6, 3, 3, 4, 9]
+# s = {x for x in mas if x % 2 == 0}
+# print(s)
+
+# def to_set(element):
+#     st = set(element)
+#     return st, len(st)
+#
+#
+# print(to_set('я обычная строка'))
+# print(to_set([4, 5, 4, 6, 2, 9, 11, 3, 4, 2]))
+
+# t = {'red', 'blue', 'green'}
+# # print('green' in t)
+# for i in t:
+#     print(i)
+
+# r = ['ab_1', 'ac_2', 'bc_1', 'bc_2']
+# a = [i for i in r if 'a' not in i]
+# a = ['A' + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in r]
+# a = ['A' + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in r if i[1] == 'c']
+# print(a)
+
+
+# a = {"Tom", "Mark", "Wolf", "Carl"}
+# print(a)
+# a.add('Anna')
+# print(a)
+# a.remove("Tom")  # при обращении к несуществующему элементу - ошибка KeyError
+# print(a)
+# user = "Wolf"
+# if user in a:
+#     a.remove(user)
+# print(a)
+# a.discard("Mark")
+# print(a)
+# n = a.pop()
+# print(n)
+# print(a)
+# a.clear()
+# print(a)
+
+
+# a = {0, 1, 2, 3}
+# b = {4, 3, 2, 1}
+# c = a.union(b)
+# c = a | b
+# a |= b
+# print(a)
+# c = a & b
+# a &= b
+# print(c)
+# print(a)
+# c = a - b
+# a -= b
+# print(c)
+# print(a)
+# c = a ^ b
+# a ^= b
+# print(c)
+# print(a)
+
+
+# s1 = {1, 2}
+# s2 = {3}
+# s3 = {4, 5}
+# s4 = {3, 2, 6}
+# s5 = {6}
+# s6 = {7, 8}
+# s7 = {9, 8}
+#
+# # s = s1.union(s2, s3, s4, s5, s6, s6, s7)
+# s = s1 | s2 | s3 | s4 | s5 | s6 | s6 | s7
+# print(s)
+# count = len(s)
+# print('Count', count)
+# print('Min', min(s))
+# print('Max', max(s))
+# print('Sum', sum(s))
+
+# s1 = set(input("Введите слово: "))
+# s2 = "How are you"
+# a = s1 & set(s2)
+# print(a)
+# for i in a:
+#     print(i, end=" ")
+
+
+# drawing = {'Марина', 'Женя', 'Света'}
+# music = {'Костя', 'Женя', 'Илья'}
+# one_hobby = drawing ^ music
+# print("Один кружок: ", one_hobby)
+# both_hobbies = drawing & music
+# print("Два кружка: ", both_hobbies)
+# drawing -= both_hobbies
+# print("Кружок рисования: ", drawing)
+
+# a = {0, 1, 2, 3, 4, 5}
+# b = {3, 2, 1}
+# print(a >= b)
+
+
+# Тип frozenset
+# s = frozenset([1, 2, 3, 4, 5])
+# print(s)
+# print(type(s))
+# a = frozenset({'hello', 'world'})
+
+# print(a)
+
+# a = {0, 1, 2, 3, 4}
+# print(a)
+# b = list(a)
+# print(b)
