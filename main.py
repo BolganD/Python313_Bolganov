@@ -1647,3 +1647,172 @@ from random import randint
 # print(a)
 # b = list(a)
 # print(b)
+
+
+# Словарь
+
+# lst = [1, 2, 3]
+# d = {'one': 1, 'two': 2, 'three': 3, 4: 'four'}
+#
+# print(lst[0])
+# print(d['one'])
+# d['one'] = 10
+# print(d['one'])
+# print(d[4])
+
+# d = {'one': 1, 'two': 2, 4: 'four'}
+# print(d)
+# print(type(d))
+#
+#
+# d1 = dict(one=1, two=2, four='four')
+# print(d1)
+# print(type(d1))
+
+# d = {0: 1, 'two': 2, (1, 2.3): 'кортеж', True: [2, 3, 4, 6]}
+# print(d)
+# print(d[True][1])
+# print(d[(1, 2.3)])
+# print(d['two'])
+# print(d[0])
+
+# lst = [('one', 1), ['two', 2], ['three', 3]]
+# d = dict(lst)
+# print(d)
+
+# d = {a: a ** 2 for a in range(7)}
+# print(d)
+
+# d = {'one': 1, 'two': 2, 'four': 4}
+#
+# key = 'four'
+# if key in d:
+#     del d[key]
+
+# try:
+#     del d[key]
+# except KeyError:
+#     print(key + "Нет в словаре")
+#
+# for i in d:
+#     print(i, '->', d[i])
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5, 'x4': -1}
+# m = 1
+# for i in d:
+#     m *= d[i]
+# print(m)
+
+# d = dict()
+# d[1] = input("-> ")
+# d[2] = input("-> ")
+# d[3] = input("-> ")
+# d[4] = input("-> ")
+
+# d = {i: input("-> ") for i in range(1, 5)}
+# print(d)
+# dislike = int(input("какой элемент исключить: "))
+# del d[dislike]
+# print(d[2])
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5, 'x4': -1}
+# print(sum(d))
+
+# goods = {
+#     '1': ['Core-i3-4330', 9, 4500],
+#     '2': ['Core-i3-4670K', 3, 8500],
+#     '3': ['AMD FX-63DD', 6, 3700],
+#     '4': ['Pentium G3220', 8, 2100],
+#     '5': ['Core-i5-3450', 5, 6400]
+# }
+# for i in goods:
+#     print(i, ')', goods[i][0], ' - ', goods[i][1], ' шт. по ', goods[i][2], ' руб.', sep='')
+#
+# while True:
+#     n = input('Введите номер товара: ')
+#     if n != '0':
+#         qty = int(input('Количество: '))  # 8
+#         try:
+#             goods[n][1] += qty  # goods['2'][1] = 8
+#         except KeyError:
+#             print("Неверный номер товара. (Допустимые: 1 - 5)")
+#     else:
+#         break
+
+#     n = input('Введите номер товара: ')
+#     if n != '0':
+#         if n in goods:
+#             qty = int(input('Количество: '))  # 8
+#             goods[n][1] += qty  # goods['2'][1] = 8
+#         else:
+#             print("Неверный номер товара. (Допустимые: 1 - 5)")
+#     else:
+#         break
+#
+# for i in goods:
+#     print(i, ')', goods[i][0], ' - ', goods[i][1], ' шт. по ', goods[i][2], ' руб.', sep='')
+
+
+# d = {'a': 1, 'b': 2, 'c': 3}
+#
+# print(d.keys())  # список ключей
+# print(d.values())  # список значений
+# print(d.items())  # список ключей и значений
+
+# for i, j in d.items():
+#     print(i, j)
+
+# print(list(d.values()))
+
+# d = {'a': 1, 'b': 2, 'c': 3}
+
+# d2 = d.copy()
+# print('d:', d, id(d))
+# print('d2:', d2, id(d2))
+#
+# d2['a'] = 5
+# d['e'] = 6
+#
+# print('d:', d, id(d))
+# print('d2:', d2, id(d2))
+#
+# d.clear()
+# print('d:', d, id(d))
+# print('d2:', d2, id(d2))
+
+# print(d['b'])
+# value = d.get('e', 'Такого ключа не существует')
+# print(value)
+
+# item = d.pop('e', "Такого ключа не существует")
+# item = d.popitem()  # удаляет последний ключ и значение элемента
+# print(item)
+# print(d)
+#
+# a = [1, 2, 3]
+# n = a.pop(0)
+# print(n)
+
+
+# d = {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}
+# d1 = d[]
+# for i in d:
+#     if i not in d1:
+#         del d[i]
+# print(d)
+# print(d1)
+
+# d = {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}
+# d1 = {'name': d['name'], 'salary': d['salary']}
+#
+# del d['name'], d['salary']
+#
+#
+# print(d)
+# print(d1)
+
+
+
+
+
+
