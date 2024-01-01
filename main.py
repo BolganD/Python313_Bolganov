@@ -1172,7 +1172,6 @@ import locale
 
 locale.setlocale(locale.LC_ALL, "ru")
 
-
 # seconds = time.time()
 # print('Кол-во секунд:', seconds
 #
@@ -1432,6 +1431,8 @@ locale.setlocale(locale.LC_ALL, "ru")
 # print(s)
 
 from random import randint
+
+
 #
 # s = tuple(randint(1, 100) for i in range(5))
 # print(s)
@@ -1968,3 +1969,160 @@ from random import randint
 # #
 # # for m, n1, n2 in zip(month, total, pc):
 # #     print('Чистая прибыль в', m, n1 - n2)
+
+# a = [1, 2, 3]
+# b = [*a, 4, 5, 6]
+# print(b)
+
+# def func(*args):
+#     # print(args)
+#     # print()
+#     return args
+#
+#
+# print(func(2))
+# print(func(2, 3, 4, 'abc'))
+
+# def summa(*params):
+#     res = 0
+#     for i in params:
+#         res += i
+#     return res
+#
+#
+# print(summa(1, 2, 3, 4, 5, 6, 7, 8, 9))
+# print(summa(3, 4, 5))
+
+# def to_dict(*args):
+#     return {el: el for el in args}
+#
+#
+# print(to_dict(1, 2, 3, 4))
+# print(to_dict('grey', (2, 17), 3.11, -4))
+
+# def func(*args):
+#     r = sum(args) / len(args)
+#     print(r)
+#     # res = []
+#     # for el in args:
+#     #     if el < r:
+#     #         res.append(el)
+#     # return res
+#     return [res for res in args if res < r]
+#
+#
+# print(func(1, 2, 3, 4, 5, 6, 7, 8, 9))
+# print(func(3, 6, 1, 9, 5))
+
+
+# def func(a, *args):
+#     return a, args
+#
+#
+# print(func(1))
+# print(func(1, 2, 3, 4, 5, 6, 7))
+
+# def print_score(student, *scores):
+#     print("Student Name: ", student)
+#     for score in scores:
+#         print(score)
+#
+#
+# print_score('Dima', 5, 4, 3, 3, 5, 4)
+# print_score('Sasha', 4, 2, 5, 5, 3, 4)
+# print_score('Artur')
+
+# def func(**kwargs):
+#     return kwargs
+#
+#
+# print(func(a=1, b=2, c=3, d='Dima'))
+# print(func())
+# print(func(d=9))
+
+
+# def intro(**data):
+#     for k, v in data.items():
+#         print(k, '->', v)
+#     print()
+#
+#
+# intro(name='Dima', surname='Bolganov', age=22)
+# intro(name='Yana', surname='Ivanova', email='yana@mail.ru',  age=19, phone='+7-909-324-47-47')
+
+
+# def db(**kwargs):
+#     my_dict.update(kwargs)
+#
+#
+# my_dict = {'one': 'first'}
+# db(k1=22, k2=32, k3=11, k4=91)
+# db(name='Bob', age=31, weight=61, eyes_color='green')
+# print(my_dict)
+
+
+# def func(a, b, c, *args, d, e, **kwargs):
+#     return a, b, c, args, e, kwargs, d
+#
+#
+# print(func(5, 6, 7, 8, 9, 5, 5, 34, 4, e=100, k1=22, k2=32, k3=11, k4=91, d=55))
+
+
+# name = 'Tom'
+# print('глобальная область видимости: ', id(name))
+#
+#
+# def hi():
+#     # global name
+#     name = 'Sam'
+#     print('локальная область видимости: ', id(name))
+#     surname = 'Johnson'
+#     print('Hello', name, surname)
+#
+#
+# def bye():
+#     print('Good bye', name)
+#
+#
+# hi()
+# bye()
+# print(name)
+# print('глобальная область видимости: ', id(name))
+
+# i = 5
+#
+#
+# def func(arg=i):
+#     print(arg)
+#
+#
+# i = 6
+# func()  # 5
+
+# x = 4
+#
+#
+# def add_five(a):
+#     # x = 2
+#
+#     def add_some():
+#         # x = 1
+#         print('x =', x)
+#         return a + x
+#
+#     return add_some()
+#
+#
+# print(add_five(5))
+
+
+# sum = 5
+
+# lst = [9, 5, 3, 8]
+# print(sum(lst))
+
+# import builtins
+# name = dir(builtins)
+#
+# for t in name:
+#     print(t)
