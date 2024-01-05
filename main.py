@@ -2126,3 +2126,269 @@ from random import randint
 #
 # for t in name:
 #     print(t)
+
+# def outer(who):
+#     def inner():
+#         print('Hello,', who)
+#     inner()
+#
+#
+# outer('World!')
+
+# def fun1():
+#     a = 6
+#
+#     def fun2(b):
+#         a = 4
+#         print(a + b)  # 8
+#
+#     print('a:', a)  # 6
+#     fun2(4)
+#
+#
+# fun1()
+
+
+# x = 25
+# t = 0
+#
+#
+# def fn():
+#     global t
+#     a = 30
+#
+#     def inner():
+#         nonlocal a
+#         a = 35
+#         print('a:', a)
+#
+#     inner()
+#     t = a
+#
+#
+# fn()
+# c = x + t  # 25 + 30 = 55
+# print(c)
+
+
+# def fn1():
+#     x = 25
+#
+#     def fn2():
+#         x = 33
+#
+#         def fn3():
+#             nonlocal x
+#             x = 55
+#
+#         fn3()
+#         print('fn2.x =', x)
+#
+#     fn2()
+#     print('fn1.x =', x)
+#
+#
+# fn1()
+
+
+# def outer(a1, b1, a2, b2):
+#     a = 0
+#     b = 0
+#
+#     def inner():
+#         nonlocal a, b
+#         a = a1 + a2
+#         b = b1 + b2
+#
+#     inner()
+#     return [a, b]
+#
+#
+# res = outer(2, 3, -1, 4)
+# print(res)
+
+
+# def outer(n):
+#     def inner(x):
+#         return n + x
+#
+#     return inner
+#
+#
+# item1 = outer(5)
+# print(item1(10))
+#
+# item2 = outer(8)
+# print(item2(5))
+
+# def func1():
+#     a = 1
+#     b = 'line'
+#     c = [1, 2, 3]
+#
+#     def func2():
+#         nonlocal a, b
+#         c.append(4)
+#         a = a + 1
+#         b = 'soft' + b
+#         return a, b, c
+#
+#     return func2
+#
+# func = func1()
+# print(func())
+
+# def func(city):
+#     count = 0
+#
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         print(city, count)
+#
+#     return inner
+#
+#
+# res1 = func('Москва')
+# res1()
+# res1()
+# res2 = func('Сочи')
+# res2()
+# res2()
+# res2()
+# res1()
+# res1()
+
+
+# lambda (анонимная функция)
+
+# print((lambda x, y: x + y)(1, 2))
+#
+# func = lambda x, y: x + y
+# print(func(1, 2))
+
+# print((lambda x, y: x**2 + y**2)(2, 5))
+
+# print((lambda *args: args)(1, 2, 3, 4, 5, 6))
+
+# y = (
+#     lambda x: x * 2,
+#     lambda x: x * 3,
+#     lambda x: x * 4,
+# )
+#
+# for i in y:
+#     print(i('abc  '))
+
+
+# def outer(n):
+#     def inner(x):
+#         return x + n
+#
+#     return inner
+#
+#
+# f = outer(5)
+# print(f(10))
+#
+#
+# def outer1(n):
+#     return lambda x: x + n
+#
+#
+# f1 = outer1(5)
+# print(f1(10))
+#
+#
+# outer2 = lambda n: lambda x: x + n
+#
+# f2 = outer2(5)
+# print(f2(10))
+#
+#
+# print((lambda n: lambda x: x + n)(5)(10))
+
+
+# print((lambda x, y, z: x + y + z)(2, 4, 6))
+# print((lambda n: lambda x: lambda y: n + x + y)(2)(4)(6))
+
+# def func(item):
+#     return item[1]
+#
+#
+# d = {'b': 3, 'c': 1, 'a': 2}  # {'c': 2, 'a': 2, 'b': 3}
+# lst = list(d.items())
+# print(lst)
+# lst.sort(key=lambda i: i[1])
+# # lst.sort(key=func)
+# print(lst)
+# d1 = dict(lst)
+# print(d1)
+
+
+# players = [
+#     {'name': 'Антон', 'last name': 'Бирюков', 'rating': 9},
+#     {'name': 'Алексей', 'last name': 'Бодня', 'rating': 10},
+#     {'name': 'Федор', 'last name': 'Сидоров', 'rating': 4},
+#     {'name': 'Михаил', 'last name': 'Семенов', 'rating': 6},
+# ]
+#
+# res = sorted(players, key=lambda item: item['last name'])
+# print(res)
+#
+# res1 = sorted(players, key=lambda item: item['rating'])
+# print(res1)
+#
+# res2 = sorted(players, key=lambda item: item['rating'], reverse=True)
+# print(res2)
+
+# a = [
+#     lambda x, y: x + y,
+#     lambda x, y: x - y,
+#     lambda x, y: x * y,
+#     lambda x, y: x / y,
+# ]
+#
+# print(a[0](5, 2))
+# print(a[1](5, 2))
+# print(a[2](5, 2))
+# print(a[3](5, 2))
+
+# d = {
+#     1: lambda: print('Понедельник'),
+#     2: lambda: print('Вторник'),
+#     3: lambda: print('Среда'),
+#     4: lambda: print('Четверг'),
+#     5: lambda: print('Пятница'),
+#     6: lambda: print('Суббота'),
+#     7: lambda: print('Воскресенье')
+# }
+#
+# d[5]()
+
+# d = {
+#     'circle': lambda r: r ** 2 * 3.14,
+#     'rectangle': lambda w, h: w * h,
+#     'trapezoid': lambda a, b, h: 0.5 * (a + b) * h
+# }
+#
+# for i in
+# main = int(input("Площадь какой фигуры вы хотите найти (1: окружность; 2: прямоугольник; 3: трапеция): "))
+# if main != 0 and main < 3 and main == 1:
+#     r_in = int(input('Введите радиус окружности: '))
+#     print('Площадь окружности радиуса ', r_in, ': ', d['circle'](r_in), sep="")
+# if main != 0 and main < 3 and main == 2:
+#     h_in = int(input('Введите длину прямоугольника: '))
+#     w_in = int(input('Введите ширину прямоугольника: '))
+#     print('Площадь прямоугольника размером ', h_in, " * ", w_in, ': ', d['rectangle'](h_in, w_in), sep="")
+# if main != 0 and main < 4 and main == 3:
+#     a_in = int(input('Введите первое основание трапеции: '))
+#     b_in = int(input('Введите второе основание трапеции: '))
+#     he_n = int(input('Введите высоту трапеции: '))
+#     print('Площадь трапеции для a=', a_in, ', b=', b_in, ', h=', he_n, ': ', d['trapezoid'](a_in, b_in, he_n), sep="")
+# else:
+#     print('Введен неверный номер фигуры. Попробуйте снова.')
+# print('Площадь прямоугольника размером 10*13: ', d['rectangle'](10, 13))
+# print('Площадь трапеции для a=7, b=5, h=3: ', d['trapezoid'](7, 5, 3))
+
+
