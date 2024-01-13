@@ -2392,3 +2392,242 @@ from random import randint
 # print('Площадь трапеции для a=7, b=5, h=3: ', d['trapezoid'](7, 5, 3))
 
 
+# print((lambda a, b: a if a > b else b)(15, 13))
+# print((lambda a, b, c: a if (a < b and a < c) else (b if b < c else c))(9, 13, 7))
+
+
+# def fib2(n):  # return Fibonacci series up to n
+#     """Return a list containing the Fibonacci series up to n."""
+#     result = []
+#     a, b = 0, 1
+#     while a < n:
+#         result.append(a)    # see below
+#         a, b = a+b, b
+#     return result
+#
+#
+# fib = fib2(100)    # call it
+# print(fib)
+
+# t = (2.88, -1.75, 100.55)
+# t2 = tuple(map(int, t))
+# # t2 = tuple(map(lambda x: int(x), t))
+# print(t2)
+
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5]
+# res = list(map(lambda x, y: (x , y), st, num))
+# print(res)
+
+# num = ['1', '2', '3']
+# print(list(map(int, num)))
+
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+# l_s = list(map(lambda x, y: (x + y), l1, l2))
+# print(l_s)
+
+# t1 = ('abcd', 'efthssfh', 'vs', 'gif')
+# t2 = tuple(filter(lambda s: len(s), t1))
+# print(t2)
+
+# b = [66, 98, 72, 68, 59, 60, 81, 74, 65]
+# # res = list(filter(lambda s: s > 75, b))  # только проверяет условие (цикл с условием)
+# res = list(map(lambda s: s + 5, b))  # только выполняет действие с каждым элементом (цикл без условия)
+# print(res)
+
+
+# m = list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(10))))
+# print(m)
+# n = [x ** 2 for x in range(10) if x % 2]
+# print(n)
+
+# import random
+#
+# my_list = [random.randint(1, 30) for i in range(20)]
+# print(my_list)
+#
+# print(list(filter(lambda num: 10 <= num <= 20, my_list)))
+
+
+# def hello():
+#     return 'Hello, I am func "hello"'
+
+
+# def super_func(func):
+#     print('Hello, I am func "super_func"')
+#     print(func())
+
+#
+# super_func(hello)
+
+
+# def hello():
+#     return 'Hello, I am func "hello"'
+#
+#
+# test = hello
+# print(test())
+
+
+# Декораторы:
+
+# def my_decor(func):
+#     def wrap():
+#         print('Код до функции')
+#         func()
+#         print('Код после функции')
+#     return wrap
+#
+#
+# def func_test():
+#     print('Hello, I am func "func_test"')
+#
+#
+# test = my_decor(func_test)
+# test()
+
+# def my_decor(func):  # декорирующая функция
+#     def wrap():
+#         print("*" * 30)
+#         func()
+#         print('=' * 30)
+#     return wrap
+#
+#
+# @my_decor  # декоратор
+# def func_test():  # декорируемая функция
+#     print('Hello, I am func "func_test"')
+#
+#
+# @my_decor
+# def hello():
+#     print('Hello, I am func "hello"')
+#
+#
+# func_test()
+# hello()
+
+# def bold(fn):
+#     def wrap():
+#         return '<b>' + fn() + '</b>'
+#
+#     return wrap
+#
+#
+# def italic(fn):
+#     def wrap():
+#         return '<i>' + fn() + '</i>'
+#
+#     return wrap
+#
+#
+# @bold
+# @italic
+# def hello():
+#     return 'text'
+#
+#
+# print(hello())
+
+
+# def cnt(fn):
+#     count = 0
+#
+#     def wrap(arg1, arg2):
+#         nonlocal count
+#         count += 1
+#         fn(arg1, arg2)
+#         print('Вызов функции: ', count, '\n', '*' * 30, sep='')
+#
+#     return wrap
+#
+#
+# @cnt
+# def hello(a, b):
+#     print('Hello', a, '\nHello', b)
+#
+#
+# hello('Python', 'JavaScript')
+# hello('one', 'two')
+# # hello()
+
+# def args_decor(fn):
+#     def wrap(*args, **kwargs):
+#         print('args', args)
+#         print('kwargs', kwargs)
+#         fn(*args, **kwargs)
+#     return wrap
+#
+#
+# @args_decor
+# def print_data(a, b, c, study='Python'):
+#     print(a, b, c, 'изучают', study, '\n')
+#
+#
+# print_data('Борис,', 'Лиза,', 'Светлана', study='JavaScript')
+# print_data('Дима', 'Сергей', 'Виктор')
+
+# def decor(args1, args2):
+#     def args_dec(fn):
+#         def wrap(x, y):
+#             print(args1, x, args2, y, '=', end=" ")
+#             fn(x, y)
+#
+#         return wrap
+#     return args_dec
+#
+#
+# @decor('Сумма:', '+')
+# def summa(a, b):
+#     (print(a + b))
+#
+#
+# @decor('Разность:', '-')
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
+
+
+# def decor(args1):
+#     def args_dec(fn):
+#         def wrap(x):
+#             return fn(x) * args1
+#         return wrap
+#
+#     return args_dec
+#
+#
+# @decor(3)
+# def p(a):
+#     return a
+#
+#
+# print(p(5))
+
+# def dec(args1, args2):
+#     def arg_dec(fn):
+#         def wrap(v, x, y, z):
+#             len_nums = len(fn(v, x, y, z))
+#             # summa_sah = (v + x + y + z) / len_nums
+#             print(args1, v, ', ', x, ', ', y, ', ', z, args2, (v + x + y + z) / len_nums, sep='')
+#         return wrap
+#     return arg_dec
+#
+#
+# def summa(a, b, c, d):
+#     s = a + b + c + d
+#     print('Сумма чисел ', a, ', ', b, ', ', c, ', ', d, ' = ', s, sep='')
+#
+#
+# @dec('Среднее арифметическое чисел ', ' = ')
+# def sub(a, b, c, d):
+#     return a, b, c, d
+#
+#
+# summa(2, 3, 3, 4)
+# sub(2, 3, 3, 4)
