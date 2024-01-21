@@ -2631,3 +2631,180 @@ from random import randint
 #
 # summa(2, 3, 3, 4)
 # sub(2, 3, 3, 4)
+
+
+# print(int('18'))
+# print(int(18.5))
+# print(int(float('18.5')))
+
+# print(int('100', 2))  # 4
+# print(int('100', 8))  # 64
+# print(int('100', 10))  # 100
+# print(int('100', 16))  # 256
+
+# print(bin(18))  # 0b10010 - двоичная сч
+# print(oct(18))  # 0o22 - восьмеричная сч
+# print(hex(18))  # 0x12 - шестнадцатеричная сч
+#
+# print(0b10010)
+# print(0o22)
+# print(0x12)
+# print(0b10010 + 0o22 + 0x12 + 18)
+
+# q = 'Pyt'
+# w = "hon"
+# e = q + w
+# print(e)
+# # print(e * -3)
+# # print('y' in e)
+# # print('y1' in e)
+#
+# # print(e[-6])
+# # print(e[1:4])
+# # print(e[2:])
+# # print(e[::-1])
+#
+# e = e[:3] + 't' + e[4:]
+# print(e)
+
+
+# def changeCharToStr(s, c_old, c_new):
+#     s2 = ''
+#     i = 0
+#
+#     while i < len(s):
+#         if s[i] == c_old:
+#             s2 += c_new
+#         else:
+#             s2 += s[i]
+#         i += 1
+#     return s2
+#
+#
+# str1 = 'Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования.'
+#
+# str2 = changeCharToStr(str1, 'N', 'P')
+# print('str1 =', str1)
+# print('str1 =', str2)
+
+
+# print('Привет')
+# print(u'Привет')
+
+# print('C.\\folder\\file.txt\\')
+# print(r'C.\folder\file.txt\\'[:-1])
+# print(r'C.\folder\file.txt' + '\\')
+
+# name = 'Дмитрий'
+# age = 25
+# print(f'Меня зовут {name}. Мне {age} лет.')
+# m = 2.5643523
+# print(f'Число: {round(m, 2)}')
+# print(f'Число: {m:.3f}')
+
+# x = 10
+# y = 5
+# print(f'{x = }, {y = }')
+# print('x = ', x, ', y = ', y, sep='')
+
+# print(f'{x} x {y} / 2 = {x * y / 2}')
+# num = 74
+# print(f'{{{{{num}}}}}')
+
+# dir_name = 'my_doc'
+# file_name = 'data.txt'
+# print(fr'home\{dir_name}\{file_name}')
+#
+# s = """
+# Многос
+# тро
+# чный\n текст
+# """
+# print(s)
+# s1 = '''
+# Многострочн'ый' "новый" тек\nст
+# '''
+# print(s1)
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n"""
+#     return n ** 2
+#
+#
+# print(square(5))
+# print(square.__doc__)
+# print(sum.__doc__)
+# print(len.__doc__)
+
+
+# from math import pi
+#
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#     Вычисляет площадь цилиндра на основании заданной высоты и радиуса основания
+#
+#     :param r: положительное число, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительное число, площадь цилиндра
+#     """
+#     print('Hello')
+#     return 2 * pi * r * (r + h)
+#
+#
+# print(cylinder(2, 4))
+# print(cylinder.__doc__)
+
+# print(ord('a'))  # 97
+# print(ord('й'))  # 97
+
+# while True:
+#     n = input('-> ')
+#     if n != '-1':
+#         print(ord(n))
+#     else:
+#         break
+
+
+# s = 'Test string for me'
+# arr = [ord(x) for x in s]
+# print('ASCII коды:', arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print('Среднее арифметическое: ', arr)
+# arr += [ord(x) for x in input('-> ')[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
+
+# print(chr(97))
+# print(chr(1048))
+# print(chr(8364))
+
+# print('apple' == 'Apple')  # 97 == 65
+# print('apple' > 'Apple')  # 97 > 65
+#
+# print(ord('a'))
+# print(ord('A'))
+
+# a = 122
+# b = 97
+# all_num = [chr(z) for z in range(b, a + 1)]
+# nums = str(all_num)
+# print(nums)
+
+
+def ascii_nums(a, b):
+    if a < b:
+        all_num_v_a = [chr(z) for z in range(a, b + 1)]
+        return all_num_v_a
+    elif a > b:
+        all_num_v_b = [chr(z) for z in range(b, a + 1)]
+        return all_num_v_b
+
+
+x = int(input('a ->'))
+y = int(input('b -> '))
+
+print(ascii_nums(x, y))
