@@ -1167,10 +1167,10 @@
 # print(num1)
 # print(num2)
 
-import time
-import locale
-
-locale.setlocale(locale.LC_ALL, "ru")
+# import time
+# import locale
+#
+# locale.setlocale(locale.LC_ALL, "ru")
 
 # seconds = time.time()
 # print('Кол-во секунд:', seconds
@@ -1430,7 +1430,7 @@ locale.setlocale(locale.LC_ALL, "ru")
 # s = tuple(int(input("-> ")) for i in range(5))
 # print(s)
 
-from random import randint
+# from random import randint
 
 
 #
@@ -2795,16 +2795,180 @@ from random import randint
 # print(nums)
 
 
-def ascii_nums(a, b):
-    if a < b:
-        all_num_v_a = [chr(z) for z in range(a, b + 1)]
-        return all_num_v_a
-    elif a > b:
-        all_num_v_b = [chr(z) for z in range(b, a + 1)]
-        return all_num_v_b
+# def ascii_nums(a, b):
+#     if a < b:
+#         all_num_v_a = [chr(z) for z in range(a, b + 1)]
+#         return all_num_v_a
+#     elif a > b:
+#         all_num_v_b = [chr(z) for z in range(b, a + 1)]
+#         return all_num_v_b
+#
+#
+# x = int(input('a ->'))
+# y = int(input('b -> '))
+#
+# print(ascii_nums(x, y))
+
+# from random import randint
+#
+# SHORTEST = 7
+# LONGEST = 10
+# MIN_ASCII = 33
+# MAX_ASCII = 126
+#
+#
+# def random_password():
+#     random_length = randint(SHORTEST, LONGEST)
+#     result = ''
+#     for i in range(random_length):
+#         result += chr(randint(MIN_ASCII, MAX_ASCII))
+#     return result
+#
+#
+# print('Ваш случайный пароль:', random_password())
+
+# s = 'hello, WORLD! I am learning Python.'
+
+# print(s.capitalize())  # Hello, world! i am learning python.
+# print(s.lower())  # hello, world! i am learning python.
+# print(s.upper())  # HELLO, WORLD! I AM LEARNING PYTHON.
+# print(s.swapcase())  # HELLO, world! i AM LEARNING pYTHON.
+# print(s.title())  # Hello, World! I Am Learning Python.
+# print(s)
+# # print(s.count('h'))  # возвращает кол-во точных вхождений подстроки в строку
+# # print(s.count('h', 1, -4))
+# print(s.find('Python', 10, -20))  # ищет в строке подстроку и возвращает его
+# # индекс,
+# # если совпадение не найден, то возвращает '-1'
+# print(s.find('l'))
+# print(s.rfind('l'))
+#
+# print(s.index('l'))
+# print(s.rindex('l'))
+
+# two_words = input('Введите два слова через пробел: ')
+# s_one = two_words[:two_words.find(' ')]
+# s_two = two_words[two_words.find(' ') + 1:]
+# s_one, s_two = s_two, s_one
+# print(s_one, s_two)
+
+# print(s.startswith('hello'))  # возвращает True если строка начинает с
+# # указанной подстроки
+# print(s.find('I'))
+# print(s.startswith('I am', 14))
+# print(s.endswith('lo', 3, 5))
+# print('abc123'.isalpha())
+# print('abcABC'.isalpha())  # определяет, состоит ли строка только из букв
+# print(''.isalpha())
+# print('123'.isdigit())  # определяет, состоит ли строка из цифр
+# print('123.234'.isdigit())
+#
+# print('abc123'.isalnum())  # определяет, состоит ли строка из букв и цифр
+# print('abcA123'.isalnum())
+#
+# print('abc'.islower())  # определяет, является ли строки строчными буквами
+# print('!#@ABC'.isupper())  # определяет, является ли строки заглавными буквами
+
+# print('py'.center(10, '-'))
+# print('py'.center(11, '-'))
+
+# print('    py   '.lstrip())
+# print('   py    '.rstrip())
+# print('   py    '.strip())
+#
+# print('https://www.pythons.org'.lstrip("/:pths").rstrip('.org'))
+# print('https://www.pythons.org'.strip('/:pths.org'))
+
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# print(str1.replace('Nython', 'Python', 2))
 
 
-x = int(input('a ->'))
-y = int(input('b -> '))
+# def sert(st1, st2, alst):
+#     a = alst.replace(st1, st2, 1)
+#     return a
+#
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# print(sert('Nython','Python',str1))
 
-print(ascii_nums(x, y))
+# s1 = '-'
+# seq = ('a', 'b', 'c')
+# print(s1.join(seq))
+# print('..'.join(['1', '2']))  # объединение итерируемой последовательности (
+# # состоит из строковых значений) в строку
+# print(':'.join('Hello'))
+
+# s = 'hello, WORLD! I am learning Python.'
+#
+# print(s.split())
+# print('www.python.org.ru'.rsplit('.', 1))
+# print('www.python.org.ru'.split('.', 1))  # делит строку на список, состоящий
+# # из подстрок
+
+
+# a = input('-> ').split()
+# a = int(a)
+# print(a)
+
+# a = input('-> ').split()
+# print(a)
+# print(a[0], a[1][0] + '.', a[2][0] + '.')
+
+
+# a = list(map(int, input('Введите коды символов: ').split()))
+# print(a)
+#
+# b = list(map(int, a))
+# print(b)
+
+import re
+
+
+# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта.'
+# reg = 'я'
+# print(re.findall(reg, s))  # возвращает список, содержащий все совпадения с
+# # шаблоном
+# print(re.search(reg, s))  # возвращает месторасположение первого совпадения с
+# # шаблоном
+# print(re.search(reg, s).span())
+#
+# print(re.search(reg, s).start())
+# print(re.search(reg, s).end())
+#
+# print(re.search(reg, s).group())
+
+# print(re.match(reg, s))  # возвращает месторасположение первого совпадения с
+# шаблоном, но только вначале строки
+
+# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта.'
+# reg = r"\."
+# print(re.split(reg, s))  # возвращает список, в котором строка разбита по
+# # шаблону
+#
+# print(re.sub(reg, '!', s, 1))  # поиск и замена
+
+
+# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта. 987654'
+# # reg = r"[204]"
+# # reg = r"[0-4]"
+# # reg = r"[12][0-9][0-9][0-9]"
+# reg = r"[^0-9]"
+# print(re.findall(reg, s))
+
+# print(ord('Ё'))
+# print(ord('ё'))
+#
+# print(ord('А'))
+# print(ord('а'))
+#
+# print(ord('Я'))
+# print(ord('я'))
+
+main_str = input('Введите строку: ')
+# main_str = 'I am learning Python. hello, WORLD!'
+# print(main_str)
+st1 = main_str.find('h')
+st2 = main_str.rfind('h')
+change_str = main_str[st1 + 1:st2 + 1]
+
+print(main_str[:st1] + change_str[::-1] + main_str[st2:])
