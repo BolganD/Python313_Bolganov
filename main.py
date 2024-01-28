@@ -2924,8 +2924,8 @@
 import re
 
 
-# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта.'
-# reg = 'я'
+# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта. 200010 0002001'
+# reg = r'\w+\s\w+$'
 # print(re.findall(reg, s))  # возвращает список, содержащий все совпадения с
 # # шаблоном
 # print(re.search(reg, s))  # возвращает месторасположение первого совпадения с
@@ -2964,11 +2964,88 @@ import re
 # print(ord('Я'))
 # print(ord('я'))
 
-main_str = input('Введите строку: ')
-# main_str = 'I am learning Python. hello, WORLD!'
-# print(main_str)
-st1 = main_str.find('h')
-st2 = main_str.rfind('h')
-change_str = main_str[st1 + 1:st2 + 1]
+# main_str = input('Введите строку: ')
+# # main_str = 'I am learning Python. hello, WORLD!'
+# # print(main_str)
+# st1 = main_str.find('h')
+# st2 = main_str.rfind('h')
+# change_str = main_str[st1 + 1:st2 + 1]
+#
+# print(main_str[:st1] + change_str[::-1] + main_str[st2:])
 
-print(main_str[:st1] + change_str[::-1] + main_str[st2:])
+
+
+# st = ('Час в 24-часовом формате от 00 до 23. 2021-06-15Е22:55. Минуты, '
+#       'в диапазоне от 00 до 59. 2021-06-15Т01:09.')
+# req = r'[0-2][0-3]:[0-5][0-9]'
+# print(re.findall(req, st))
+
+# d = 'Цифры: 7, +17, --42, 0013, 0.3'
+# print(re.findall(r'[+-]?\d+[.\d]*', d))
+
+# st = "05-03-1987 # Дата рождения"
+#
+# print('Дата рождения:', re.sub('-', '.', re.sub(r"\s#.*", "", st)))
+# print('Дата рождения:', re.sub('-', '.', re.sub(r"#.*", "", st)))
+
+# st = 'author=Пушкин А.С; title = Евгений Онегин; price =200; year= 1831'
+# req = r"\w+\s*=\s*[^;]+"
+# print(re.findall(req, st))
+
+# st = '12 сентября 2021 года 235'
+# req = r"\d{,4}"
+# print(re.findall(req, st))
+
+# st = '+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578'
+# req = r"[+]?7\d{10}"
+# print(re.findall(req, st))
+
+# def valid_login(name):
+#     return re.findall(r'^[A-Za-z0-9_-]{6,16}$', name)  # 6 - 16,
+#     # англ. буквы, _,
+#     # -,
+#     # [0-9]
+#
+#
+# print(valid_login('Python_master'))
+# print(valid_login('Python-Python'))
+
+
+# s = ('Я ищу совпадения в 2024 году. И я их найду в 2 счёта. 987654 Hel_lo ['
+#      '-World]')
+
+# print(re.findall(r"\w+", "12 + й", flags=re.ASCII))
+# print(re.findall(r"\w+", "12 + й", flags=re.A))
+# print(re.findall(r"\w+", "12 + й", re.A))
+
+# text = 'Hello world'
+# print(re.findall(r'\w.+', text, re.DEBUG))
+
+# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта.'
+# reg = r'я'
+# print(re.findall(reg, s, re.IGNORECASE))
+
+# text = """
+# one
+# two
+# """
+# print(re.findall(r'one.\w+', text))
+# print(re.findall(r'one.\w+', text, re.DOTALL))
+# print(re.findall(r'one$', text))
+# print(re.findall(r'one$', text, re.MULTILINE))
+
+# print(re.findall(r'''[a-z.-]+
+# @
+# [a-z.-]+
+# ''', 'test@mail.ru', re.VERBOSE))
+
+# text = """Python,
+# python,
+# PYTHON"""
+# reg = '(?mi)^python'
+# print(re.findall(reg, text))
+
+# test = ('123456@i.ru, 123_456@ru.name.ru, login@i.ru, логин-1@i.ru, '
+#         'login.3@i.ru, login.3-67@i.ru, 1login@ru.name.ru')
+# req = r'[a-zа-я0-9._-]+@[a-zа-я._-]+'
+# print(re.findall(req, test))
