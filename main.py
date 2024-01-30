@@ -3049,3 +3049,100 @@ import re
 #         'login.3@i.ru, login.3-67@i.ru, 1login@ru.name.ru')
 # req = r'[a-zа-я0-9._-]+@[a-zа-я._-]+'
 # print(re.findall(req, test))
+
+# text = "<body>пример жадного соответствия регулярных выражений</body>"
+# print(re.findall("<.*?>", text))
+
+# *?, +?, ??
+# {m,n}?, {,n}?, {n,}?
+
+# st = '12 сентября 2021 года 235'
+# req = r"\d{3,4}?"
+# print(re.findall(req, st))
+
+# s = "<p>Изображение <img alt='Картинка' src='bg.jpg'> - фон страницы</p>"
+# # reg = r'<img.*?>'
+# reg = r"<img\s+[^>]*\s*=\s*[^>]+>"
+# print(re.findall(reg, s))
+
+# text = "Python (в русском языке встречаются названия пито́н[16] или па́йтон[17]) — высокоуровневый язык " \
+#        "программирования общего назначения с динамической строгой типизацией " \
+#        "и автоматическим управлением памятью[18][19]."
+# req = r'\[\d+]'
+# print(re.findall(req, text))
+
+# s = 'Петр, Ольга и Виталий отлично учатся!'
+# reg = 'Петр|Виктор|Ольга'
+# print(re.findall(reg, s))
+
+# s = 'int = 40, float = 4.0f, double = 8.0, float, int'
+# # reg = r'\w+\s*=\s*\d[.\w]*'
+# # reg = r'int\s*=\s*\d[.\w]*|float\s*=\s*\d[.\w]*'
+# reg = r'(int|float)\s*=\s*\d[.\w]*'
+# # print(re.findall(reg, s))
+# print(re.search(reg, s).group())
+
+# (?:...) - это группирующая скобка является не сохраняющей
+
+# s = '127.0.0.1'
+# # s = '127.168.255.255'
+# # req = r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}'
+# req = r'(?:\d{1,3}.){3}\d{1,3}'
+# print(re.findall(req, s))
+# print(re.search(req, s).group())
+
+# s = '5 + 7*2 - 4'
+# reg = r'\s*([+*-])\s*'
+# print(re.split(reg, s))
+
+# a = '01-11-2021'
+# pattern = '(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20[0-9][0-9])'
+# print(re.findall(pattern, a))
+# print(re.search(pattern, a).group())
+
+# s = 'Я ищу совпадения в 2024 году. И я их найду в 2 счёта.'
+# reg = r'([0-9]+)\s(\D+)'  # ['2024 году. И я их найду в', '2024', 'году. И я их найду в']
+# print(re.findall(reg, s))
+# print(re.search(reg, s).group(1))
+# m = re.search(reg, s)
+# print(m[0], m[1], m[2])
+# print(m[1])
+# print(m[2])
+
+# text = """
+# Самара
+# Москва
+# Тверь
+# Уфа
+# Казань
+# """
+# count = 0
+#
+# def repl_find(m):
+#     global count
+#     count += 1
+#     return f"<option value='{count}'>{m.group(1)}</option>\n"
+#
+#
+# print(re.sub(r'\s*(\w+)\s*', repl_find, text))
+
+
+# s = "<p>Изображение <img src=\"bg.jpg\"> - фон страницы </p>"
+# reg = r"<(img)\s+[^>]*src\s*=(?P<q>['\"])(.+?)(?P=q)>"
+# print(re.findall(reg, s))
+#
+# # (?P<name>...)  (?P=name)
+
+# s = 'Самолёт прилетает 10/23/2024. Будем рады вас видеть после 10/24/2024.'
+# # 23.10.2024
+# reg = r'(\d{2})/(\d{2})/(\d{4})'
+# print(re.sub(reg, r'\2.\1.\3', s))
+
+# s = 'yandex.com and yandex.ru'
+# reg = r'(([a-z0-9-]{2,}\.)+[a-z]{2,4})'
+# print(re.sub(reg, r'http://\1', s, re.IGNORECASE))
+
+s = '+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 7 499 456-45-78'
+reg = r'[+]?7\s?[(]?\d{3}?[)]?\s?\d{3}?\s?[-]?\d{2}?\s?[-]?\d{2}?'
+print(re.findall(reg, s))
+
