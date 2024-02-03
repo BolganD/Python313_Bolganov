@@ -2974,7 +2974,6 @@ import re
 # print(main_str[:st1] + change_str[::-1] + main_str[st2:])
 
 
-
 # st = ('Час в 24-часовом формате от 00 до 23. 2021-06-15Е22:55. Минуты, '
 #       'в диапазоне от 00 до 59. 2021-06-15Т01:09.')
 # req = r'[0-2][0-3]:[0-5][0-9]'
@@ -3142,7 +3141,172 @@ import re
 # reg = r'(([a-z0-9-]{2,}\.)+[a-z]{2,4})'
 # print(re.sub(reg, r'http://\1', s, re.IGNORECASE))
 
-s = '+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 7 499 456-45-78'
-reg = r'[+]?7\s?[(]?\d{3}?[)]?\s?\d{3}?\s?[-]?\d{2}?\s?[-]?\d{2}?'
-print(re.findall(reg, s))
+# s = '+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 7 499 456-45-78'
+# reg = r'[+]?7\s?[(]?\d{3}?[)]?\s?\d{3}?\s?[-]?\d{2}?\s?[-]?\d{2}?'
+# print(re.findall(reg, s))
+
+
+# Рекурсия
+
+
+# def elevator(n):  # 0
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print('->', n)
+#     elevator(n - 1)  # 5 4 3 2 1
+#     print(n, end='')
+#
+#
+# n1 = int(input('На каком вы этаже?: '))  # 5
+# elevator(n1)
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+
+# def sum_list(lst):  # [1, 3, 5, 7, 9]
+#     if len(lst) == 1:
+#         return lst[0]
+#     else:
+#         return lst[0] + sum_list(lst[1:])  #
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+
+# def to_str(n, base):  # n = 15
+#     convert = "0123456789ABCDEF"
+#     if n < base:  # 254 < 16
+#         return convert[n]  # convert[15] => 'F'
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # convert[14] => 'E'
+#         # '5'
+#
+#
+# print(to_str(254, 2))
+# print(to_str(15, 2))
+# print(to_str(15, 8))
+# print(to_str(15, 16))
+
+
+# names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'], 'Alex', ['Bea',
+#                                                                     'Bill'],
+#          'Ann']
+# print(names)
+# print(len(names))
+# print(names[0])
+# print(isinstance(names[0], list))
+# print(names[1])
+# print(isinstance(names[1][1], list))
+
+
+# def count_item(lst):
+#     count = 0
+#     for item in lst:
+#         if isinstance(item, list):
+#             count += count_item(item)
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print(count_item(names))
+
+
+# def remove(text):
+#     if not text:
+#         return ''
+#     if text[0] == '\t' or text[0] == ' ':
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove(" Hello\tWorld"))
+
+
+# def nums(num):
+#     c = 0
+#     for i in num:
+#         if i < 0:
+#             c += 1
+#         # else:
+#         #     c += 1
+#     return c
+#
+#
+# o_n = [-2, 3, 8, -11, -4, 6]
+# print(nums(o_n))
+
+
+# Файлы
+
+# Текстовые
+# Бинарные
+
+
+# f = open('test.txt', 'r')
+# print(*f)
+# print(f)
+#
+# f.close()
+# print(f.closed)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+
+# f = open('test1.txt', 'r')
+#
+# print(f.readline())  # считали одну строку из файла
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+# f = open('test1.txt', 'r')
+# print(f.readlines(16))  # считали все данные из файла и вернули список строк
+# print(f.readlines())
+# f.close()
+
+# f = open('test1.txt', 'r')
+# for l in f:
+#     print(l)
+# f.close()
+
+# f = open('test1.txt', 'r')
+# c = 0
+# for i in f:
+#     c += 1
+# print(c)
+# f.close()
+
+# f = open('xyz.txt', 'a')
+# f.write('New text\n')
+# f.close()
+
+# f = open('xyz.txt', 'w')
+# line = ['This is line 1\n', 'This is line 2\n']
+# f.writelines(line)
+# f.close()
+
+
+def nums(num):
+    if not num:
+        return 0
+    else:
+        count = nums(num[1:])
+        if num[0] < 0:
+            count += 1
+        return count
+
+
+o_n = [-2, 3, 8, -11, -4, 6]
+print(nums(o_n))
 
