@@ -3296,17 +3296,152 @@ import re
 # f.writelines(line)
 # f.close()
 
+# f = open('xyz.txt', 'w')
+# lst = [str(i) for i in range(1, 20)]
+# print(lst)
+# for index in lst:
+#     f.write(index + '\t')
+# f.close()
 
-def nums(num):
-    if not num:
-        return 0
-    else:
-        count = nums(num[1:])
-        if num[0] < 0:
-            count += 1
-        return count
+# f = open('text2.txt', 'w')
+# f.write('Замена строки в текстовом файле;\nизменить строку в '
+#         'списке;\nзаписать список в файл;\n')
+# f.close()
+#
+# f = open('text2.txt', 'r')
+# rl = f.readlines()
+# print(rl)
+# rl[1] = 'Hello World\n'
+# print(rl)
+# f.close()
+#
+# f = open('text2.txt', 'w')
+# f.writelines(rl)
+# f.close()
+
+# f = open('text2.txt', 'w')
+# f.write('Замена строки в текстовом файле;\nизменить строку в '
+#         'списке;\nзаписать список в файл;\n')
+# f.close()
+#
+# f = open('text2.txt', 'r')
+# rl = f.readlines()
+# f.close()
+#
+# pos = int(input('pos = '))
+# if 0 <= pos < len(rl):
+#         del rl[1]
+# else:
+#         print('Введен неверно.')
+#
+# print(rl)
+#
+# f = open('text2.txt', 'w')
+# f.writelines(rl)
+# f.close()
+
+# def input_index():
+#     file = open('text2.txt', 'r')
+#     read_text = file.readlines()
+#     file.close()
+#     index = int(input('Введите номер строки: '))
+#     if index not in range(1, len(read_text) + 1) or index < 1:
+#         print('Убедитесь что введен корректный номер строки и повторите попытку.')
+#         return input_index()
+#     else:
+#         return read_text, index - 1
+#
+#
+# t, i = input_index()
+#
+# f = open('text2.txt', 'w')
+# del t[i]
+# f.writelines(t)
+# f.close()
+
+# f = open('test.txt', 'r')
+# print(f.read(3))
+# print(f.tell())  # возвращает текущую позицию условного курсора в файле
+# print(f.seek(1))
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open('test.txt', 'r+')
+# print(f.write('I am learning Python'))
+# print(f.tell())
+# print(f.seek(3))
+# print(f.write('-new string-'))
+# print(f.tell())
+# f.close()
+
+# with open('test.txt', 'w+') as f:
+#     print(f.write('01234\n56789'))
+#
+# with open('test.txt', 'r+') as f:
+#     for line in f:
+#         print(line[:3])
+
+# file_name = 'res_1.txt'
+# lst = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.777]
+#
+#
+# def get_line(lt):
+#     lt = list(map(str, lt))
+#     print(lt)
+#     return ' '.join(lt)
+#
+# with open(file_name, 'w') as f:
+#     f.write(get_line(lst))
+#
+#
+# with open(file_name, 'r') as f:
+#     nums = f.read()
+#
+# print(nums)
+#
+# nums_list = list(map(float, nums.split()))
+# print(sum(nums_list))
+# print(len(nums_list))
+#
+# print('Done!')
+
+# def longest_worlds(file):
+#     with open(file, 'r', encoding='utf-8') as text:
+#         w = text.read().split()
+#         max_length = len(max(w, key=len))  # длина самого длинного слова
+#         print(max_length)
+#         res = [word for word in w if len(word) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# print(longest_worlds('world.txt'))
+
+# one = 'one.txt'
+# two = 'two.txt'
+
+# text = ('Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока '
+#         '№6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n')
+# with open(one, 'r') as fr, open(two, 'w') as fw:
+#     for line in fr:
+#         line = line.replace('Строка', 'Линия -')
+#         fw.write(line)
+#
 
 
-o_n = [-2, 3, 8, -11, -4, 6]
-print(nums(o_n))
+ch_1 = int(input('Введите номер первой строки(от 0 до 2) -> '))
+ch_2 = int(input('Введите номер второй строки(от 0 до 2) -> '))
 
+pos = open('one.txt', 'r', encoding='utf-8')
+list_one = pos.readlines()
+change_line = list_one[ch_1]
+list_one[ch_1] = list_one[ch_2]
+list_one[ch_2] = change_line
+print(list_one)
+pos.close()
+
+pos = open('one.txt', 'w', encoding='utf-8')
+pos.writelines(list_one)
+pos.close()
