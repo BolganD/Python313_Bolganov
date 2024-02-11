@@ -3428,20 +3428,143 @@ import re
 #     for line in fr:
 #         line = line.replace('Строка', 'Линия -')
 #         fw.write(line)
+
+
+
+# Модуль OS и OS.PATH
+
+import os
+
+# print(os.getcwd())  # путь к текущей директории
 #
+# print(os.listdir())  # список директории и файлов
+# print(os.listdir('..\..'))
+
+# os.mkdir("folder1")  # создание папки
+
+# os.makedirs("nested1/nested2/nested3")
+
+# os.rmdir('folder1')
+
+# os.remove('xyz.txt')  # удаление файла
+
+# os.rmdir('nested1')
+
+# os.rename('nested1', 'tested')  # переименовать папку
+
+# os.rename('world.txt', 'tested/worlds.txt')  # переименовать файл и
+# перенести его в заданную директорию
+
+# os.renames('two.txt', 'folder1/file.txt')  # переименовали файл и переместили
+# в заданную директорию, при этом может создать промежуточные директории
+
+# print(os.listdir())
+
+# for root, dirs, files in os.walk('tested', topdown=False):
+#     print('Root:', root)
+#     print('Subdirs:', dirs)
+#     print('Files:', files)
 
 
-ch_1 = int(input('Введите номер первой строки(от 0 до 2) -> '))
-ch_2 = int(input('Введите номер второй строки(от 0 до 2) -> '))
+# def remove_empty_dirs(root_tree):
+#     print(f'Удаление пустых директорий в ветви {root_tree}')
+#     print('-' * 50)
+#
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f'Директория {root} удалена')
+#
+#     print('-' * 50)
+#
+#
+# remove_empty_dirs('tested')
 
-pos = open('one.txt', 'r', encoding='utf-8')
-list_one = pos.readlines()
-change_line = list_one[ch_1]
-list_one[ch_1] = list_one[ch_2]
-list_one[ch_2] = change_line
-print(list_one)
-pos.close()
+# import os.path
 
-pos = open('one.txt', 'w', encoding='utf-8')
-pos.writelines(list_one)
-pos.close()
+# print(os.path.split(r'D:\Python\PyCharmProject\tested\nested2\test1.txt')[0])
+# print(os.path.dirname(r'D:\Python\PyCharmProject\tested\nested2\test1.txt'))
+# print(os.path.basename(r'D:\Python\PyCharmProject\tested\nested2\test1.txt'))
+#
+# print(os.path.join(r'D:\Python', 'PyCharmProject', 'tested', 'test1.txt'))
+
+# dirs = [r'Work\F1', r'Work\F2\F21']
+# for d in dirs:
+#     os.makedirs(d)
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+#
+# for d, f in files.items():
+#     for file in f:
+#         file_path = os.path.join(d, file)
+#         print(file_path)
+#         open(file_path, 'w').close()
+
+
+# file_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f'Какой-то текст для файла расположенного по пути: {file}')
+
+
+# def print_tree(root, topdown):
+#     print(f'Обход {root} {"сверху вниз" if topdown else "снизу вверх"}')
+#     for root, dirs, files in os.walk(root, topdown):
+#         print(root)
+#         print(dirs)
+#         print(files)
+#     print('-' * 50)
+#
+#
+# print_tree('Work', False)
+# print_tree('Work', True)
+
+# print(os.path.exists(r'D:\Python\PyCharmProject\tested\nested2\test1.txt'))
+#
+# print(os.path.isfile(r'D:\Python\PyCharmProject\tested\nested2\test1.txt'))
+# print(os.path.isdir(r'D:\Python\PyCharmProject\tested\nested2\test1.txt'))
+
+import time
+#
+# path = 'main.py'
+# # print(f"{os.path.getsize('main.py')} bytes")
+# # print(os.path.getsize('main.py') // 1024)
+# #
+# print(time.strftime('%d.%m.%Y, %H:%M:%S', time.localtime(os.path.getatime(
+#     path))))  #
+# # возвращает время
+# # последнего доступа к
+# # файлу
+# print(time.strftime('%d.%m.%Y, %H:%M:%S', time.localtime(os.path.getctime(
+#     path))))  #
+# print(time.strftime('%d.%m.%Y, %H:%M:%S', time.localtime(os.path.getmtime(
+#     path))))  #  # возвращает время последнего изменения файла
+
+# file_path = r'tested\nested2\nested3\text2.txt'
+# if os.path.exists(file_path):
+#     dirs, name = os.path.split(file_path)
+#     print(f'{name}, ({dirs}) - последний доступ к файлу: '
+#           f'{os.path.getatime(file_path)}')
+# else:
+#     print(f'Файл {file_path} не существует')
+
+# def directory(main_dir):
+#     for root, dirs, files in os.walk(main_dir):
+#         for rand_dir in dirs:
+#             print(f'Имя: {str(rand_dir)}; Тип: dir')
+#         # print(f'Root: {root}')
+#         # print(f'Dirs: {dirs}')
+#         # print(f'Files: {files}')
+#
+#         for file in files:
+#             file_p = os.path.join(root, file)
+#             weight = os.path.getsize(file_p)
+#             print(f'Имя: {str(file)}; Тип: file; Размер: {weight} bytes')
+#
+#
+#
+#
+# directory('Work')
