@@ -3568,3 +3568,207 @@ import time
 #
 #
 # directory('Work')
+
+# dir_name = 'tested'
+# objs = os.listdir(dir_name)
+# print(objs)
+#
+# for obj in objs:
+#     p = os.path.join(dir_name, obj)
+#     # print(p)
+#     if os.path.isfile(p):
+#         print(f'{obj} - file - {os.path.getsize(p)} bytes')
+#     elif os.path.isdir(p):
+#         print(f'{obj} - dir')
+
+
+# ООП
+
+# В классах могут быть: свойства(поля, переменные) и методы(функции)
+# class Point:
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# p1.x = 5
+# p1.y = 24
+# print(p1.x)
+# print(p1.y)
+# print(p1.__dict__)
+# print(id(p1))
+#
+# p2 = Point()
+# p2.x = 10
+# print(p2.x + p1.x)
+# print(p2.__dict__)
+# print(id(p2))
+#
+# print(id(Point))
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self, x, y):  # def set_coord(p1):
+#         self.x = x  # p1.x = 5
+#         self.y = y  # p1.y = 24
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# # p1.x = 5
+# # p1.y = 24
+# p1.set_coord(5, 24)
+# # Point.set_coord(p1)
+#
+#
+# p2 = Point()
+# # p2.x = 10
+# # p2.y = 30
+# p2.set_coord(10, 30)
+
+
+# class Human:
+#     name = 'name'
+#     birthday = '00.00.0000'
+#     phone = '00-00-00'
+#     country = 'country'
+#     city = 'city'
+#     address = 'street, house'
+#
+#     def print_info(self):
+#         print(' Персональные данные '.center(40, '*'))
+#         print(f'Имя: {self.name}\nДата рождения: {self.birthday}\nНомер '
+#               f'телефона: {self.phone}\nСтрана: {self.country}\nГород: '
+#               f'{self.city}\nДомашний адрес: {self.address}')
+#         print('=' * 40)
+#
+#     def input_info(self, n, b, p, co, ci, ad):
+#         self.name = n
+#         self.birthday = b
+#         self.phone = p
+#         self.country = co
+#         self.city = ci
+#         self.address = ad
+#
+#     def set_address(self, address):
+#         self.address = address
+#
+#     def get_address(self):
+#         return self.address
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info('Юля', '23.05.1986', '45-46-98', 'Россия', 'Москва',
+#               'Чистопрудный бульвар, 1А')
+# h1.print_info()
+# h1.set_address('ул. Ленина, 56')
+# h1.print_info()
+# print(h1.get_address())
+# print()
+# h1.set_name('Дима')
+# h1.print_info()
+# print(h1.get_name())
+
+
+# class Person:
+#     skill = 10  # статическое свойство
+#     count = 0
+#
+#     def __init__(self, name, surname):
+#         self.name = name  # динамическое свойство
+#         self.surname = surname
+#         # print(f'Инициализатор класса {self}')
+#         Person.count += 1
+#
+#     # def __del__(self):
+#     #     print('Удаление экземпляра', self)
+#     #
+#     # def print_info(self):
+#     #
+#     #     print(f"Данные сотрудника: {self.name} {self.surname}")
+#     #
+#     # def add_skill(self, k):
+#     #     self.skill += k
+#     #     print(f'Квалификация сотрудника: {self.skill}', end='\n\n')
+#
+#
+# p1 = Person('Дмитрий', 'Болганов')
+# # p1.print_info()
+# # p1.add_skill(3)
+# # p1 = 5
+# print(p1.count)
+#
+# p2 = Person('Анна', 'Долгова')
+# # p2.print_info()
+# # p2.add_skill(2)
+# print(p2.count)
+#
+# print(Person.count)
+
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print(f'Инициализация робота: {self.name}')
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, 'выключается!')
+#         Robot.k -= 1
+#
+#         if Robot.k == 0:
+#             print(self.name, 'был последним')
+#         else:
+#             print('Работающих роботов осталось:', Robot.k)
+#     def print_welcome(self):
+#         print(f"Приветствую! Меня зовут: {self.name}")
+#
+#
+# droid1 = Robot('R2-D2')
+# droid1.print_welcome()
+# print(f'Численность роботов: {Robot.k}')
+# print()
+# droid2 = Robot('C-3PO')
+# droid2.print_welcome()
+# droid3 = Robot('HP-7')
+# droid3.print_welcome()
+# print(f'Численность роботов: {Robot.k}')
+# print('\nЗдесь роботы могут проделать какую-то работу\n')
+# print('Роботы закончили свою работу. Давайте их выключим')
+# del droid1
+# del droid2
+# del droid3
+# print(f'Численность роботов: {Robot.k}')
+
+
+class Automobile:
+    def __init__(self, name, year, brand, engine, color, price):
+        self.name = name
+        self.year = year
+        self.brand = brand
+        self.engine = engine
+        self.color = color
+        self.price = price
+
+    def input_info(self):
+        print(' Данные автомобиля '.center(40, '*'))
+        print(f'Название модели: {self.name}\nГод выпуска: '
+              f'{self.year}\nПроизводитель: {self.brand}\nМощность двигателя: '
+              f'{self.engine}\nЦвет машины: {self.color}\nЦена: {self.price}')
+        print('=' * 40)
+
+
+auto_1 = Automobile('X7 M50i', '2021', 'BMW', '530 л.с.', 'white', '10790000')
+auto_1.input_info()
