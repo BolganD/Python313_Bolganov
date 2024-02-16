@@ -3753,22 +3753,54 @@ import time
 # print(f'Численность роботов: {Robot.k}')
 
 
-class Automobile:
-    def __init__(self, name, year, brand, engine, color, price):
-        self.name = name
-        self.year = year
-        self.brand = brand
-        self.engine = engine
-        self.color = color
-        self.price = price
+# class Automobile:
+#     def __init__(self, name, year, brand, engine, color, price):
+#         self.name = name
+#         self.year = year
+#         self.brand = brand
+#         self.engine = engine
+#         self.color = color
+#         self.price = price
+#
+#     def input_info(self):
+#         print(' Данные автомобиля '.center(40, '*'))
+#         print(f'Название модели: {self.name}\nГод выпуска: '
+#               f'{self.year}\nПроизводитель: {self.brand}\nМощность двигателя: '
+#               f'{self.engine}\nЦвет машины: {self.color}\nЦена: {self.price}')
+#         print('=' * 40)
+#
+#
+# auto_1 = Automobile('X7 M50i', '2021', 'BMW', '530 л.с.', 'white', '10790000')
+# auto_1.input_info()
 
-    def input_info(self):
-        print(' Данные автомобиля '.center(40, '*'))
-        print(f'Название модели: {self.name}\nГод выпуска: '
-              f'{self.year}\nПроизводитель: {self.brand}\nМощность двигателя: '
-              f'{self.engine}\nЦвет машины: {self.color}\nЦена: {self.price}')
-        print('=' * 40)
+class Rectangle:
+
+    def __init__(self, length, wig):
+        self.len = length
+        self.wig = wig
+
+    def show_len_wig(self):
+        print(f'Длина прямоугольника: {self.len}\nШирина прямоугольника: '
+              f'{self.wig}')
+
+    def find_square(self):
+        print(f'Площадь прямоугольника: {self.len * self.wig}')
+
+    def find_per(self):
+        print(f'Периметр прямоугольника: {(self.len + self.wig) * 2}')
+
+    def find_gip(self):
+        print(f'Гипотенуза прямоугольника: '
+              f'{round((self.len**2 + self.wig**2)**0.5, 2)}')
+
+    def create_pic(self):
+        for i in range(self.len):
+            print('*' * self.wig)
 
 
-auto_1 = Automobile('X7 M50i', '2021', 'BMW', '530 л.с.', 'white', '10790000')
-auto_1.input_info()
+show_rec = Rectangle(3, 9)
+show_rec.show_len_wig()
+show_rec.find_square()
+show_rec.find_per()
+show_rec.find_gip()
+show_rec.create_pic()
