@@ -3773,34 +3773,363 @@ import time
 # auto_1 = Automobile('X7 M50i', '2021', 'BMW', '530 л.с.', 'white', '10790000')
 # auto_1.input_info()
 
-class Rectangle:
+# class Rectangle:
+#
+#     def __init__(self, length, wig):
+#         self.len = length
+#         self.wig = wig
+#
+#     def show_len_wig(self):
+#         print(f'Длина прямоугольника: {self.len}\nШирина прямоугольника: '
+#               f'{self.wig}')
+#
+#     def find_square(self):
+#         print(f'Площадь прямоугольника: {self.len * self.wig}')
+#
+#     def find_per(self):
+#         print(f'Периметр прямоугольника: {(self.len + self.wig) * 2}')
+#
+#     def find_gip(self):
+#         print(f'Гипотенуза прямоугольника: '
+#               f'{round((self.len**2 + self.wig**2)**0.5, 2)}')
+#
+#     def create_pic(self):
+#         for i in range(self.len):
+#             print('*' * self.wig)
+#
+#
+# show_rec = Rectangle(3, 9)
+# show_rec.show_len_wig()
+# show_rec.find_square()
+# show_rec.find_per()
+# show_rec.find_gip()
+# show_rec.create_pic()
 
-    def __init__(self, length, wig):
-        self.len = length
-        self.wig = wig
 
-    def show_len_wig(self):
-        print(f'Длина прямоугольника: {self.len}\nШирина прямоугольника: '
-              f'{self.wig}')
+# class Point:
+#     __slots__ = ['__x', '__y', 'z']
+#
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print('Координаты должны быть числами')
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def get_y(self):
+#         return self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print('Координата', x, 'должна быть числом')
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print('Координата', y, 'должна быть числом')
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 1
+# print(p1.z)
+#
+# p1.set_x(20.6)
+# p1.set_y(30)
+# p1.set_y('aaa')
+# print(p1.__check_value())
+# print(p1.get_coord())
+# p1.set_coord(100, 'abc')
+#
+# print(p1.get_coord())
+# p1.__x = 100
+# p1.y = 'abc'
+# print(p1.x, p1.y)
+# print(p1.get_x())
+# print(p1.get_y())
+# print(p1.__dict__)
+# print(Point.__dict__)
+# print(p1._Point__x)
+# p1._Point__x = 'asf'
+# print(p1.__dict__)
 
-    def find_square(self):
-        print(f'Площадь прямоугольника: {self.len * self.wig}')
 
-    def find_per(self):
-        print(f'Периметр прямоугольника: {(self.len + self.wig) * 2}')
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __get_x(self):
+#         return self.__x
+#
+#     def __get_y(self):
+#         return self.__y
+#
+#     def __set_x(self, x):
+#         self.__x = x
+#
+#     def __set_y(self, y):
+#         self.__y = y
+#
+#     x = property(__get_x, __set_x)
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.get_x())
+# print(p1.x)
+# p1.x = 100
+# print(p1.x)
+# # print(Point.__dict__)
+# print(p1.__dict__)
 
-    def find_gip(self):
-        print(f'Гипотенуза прямоугольника: '
-              f'{round((self.len**2 + self.wig**2)**0.5, 2)}')
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         if not isinstance(x, (int, float)):
+#             raise TypeError("Устанавливаемое значение должно быть числом") #
+#             # Исключение выбрасывает
+#             # print()
+#         self.__x = x
+#
+#     def __get_y(self):
+#         return self.__y
+#
+#     def __set_y(self, y):
+#         self.__y = y
+#
+#     @x.deleter
+#     def x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.get_x())
+#
+# p1.x = 100
+# print(p1.x)
+# print(p1.__dict__)
 
-    def create_pic(self):
-        for i in range(self.len):
-            print('*' * self.wig)
+
+class Person:
+    def __init__(self, name, old):
+        self.__name = name
+        self.__old = old
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def old(self):
+        return self.__old
+
+    @name.setter
+    def name(self, changing_name):
+        if isinstance(changing_name, str):
+            self.__name = changing_name
+        else:
+            print('Введите корректное имя')
+
+    @old.setter
+    def old(self, changing_old):
+        if isinstance(changing_old, int):
+            self.__old = changing_old
+        else:
+            print('Возраст задается только числами')
+
+    @name.deleter
+    def name(self):
+        print('Удаление имени')
+        del self.__name
+
+    @old.deleter
+    def old(self):
+        print('Удаление возраста')
+        del self.__old
 
 
-show_rec = Rectangle(3, 9)
-show_rec.show_len_wig()
-show_rec.find_square()
-show_rec.find_per()
-show_rec.find_gip()
-show_rec.create_pic()
+person_1 = Person('Igor', 51)
+print(person_1.__dict__)
+print(person_1.name)
+print(person_1.old)
+person_1.name = 'Sergey'
+print(person_1.name)
+del person_1.old
+print(person_1.__dict__)
+
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print('Килограммы задаются только числами')
+#
+#     def to_pounds(self):
+#         return self.__kg * 2.205
+#
+#     def print_data(self):
+#         print(self.__kg, 'кг => ', end='')
+#         print(self.to_pounds(), 'фунтов')
+#
+#
+# weight = KgToPounds(12)
+# weight.print_data()
+# weight.kg = 41
+# weight.print_data()
+# weight.kg = 'ABSD'
+# weight.print_data()
+# print(weight.__dict__)
+
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#     # get_count = staticmethod(get_count)
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(p1.get_count())
+# print(Point.get_count())
+
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(round(Change.inc(10) / Change.dec(10), 2))
+
+
+# class Args:
+#     @staticmethod
+#     def maxi(*my_list):
+#         return max(my_list)
+#
+#     @staticmethod
+#     def mini(*my_list):
+#         return min(my_list)
+#
+#     @staticmethod
+#     def s_arif(*my_list):
+#         return sum(my_list) / len(my_list)
+#
+#     # @staticmethod
+#     # def factorial(num):
+#     #     if num == 1:
+#     #         return 1
+#     #     else:
+#     #         return Args.factorial(num - 1) * num
+#     @staticmethod
+#     def factorial(num):
+#         fact = 1
+#         for i in range(1, num + 1):
+#             fact *= i
+#         return fact
+#
+#
+# print(f'Максимальное число: {Args.maxi(3, 5, 7, 9)}')
+# print(f'Минимальное число: {Args.mini(3, 5, 7, 9)}')
+# print(f'Среднее арифметическое число: {Args.s_arif(3, 5, 7, 9)}')
+# print(f'Факториал числа {5}: {Args.factorial(5)}')
+
+# from math import sqrt
+#
+#
+# class Square:
+#     count = 0
+#
+#     @staticmethod
+#     def square_triangle1(a, b, c):
+#         Square.count += 1
+#         p = (a + b + c) / 2
+#         return sqrt(p * (p - 2) * (p - b) * (p - c))
+#
+#     @staticmethod
+#     def square_triangle2(a, b):
+#         Square.count += 1
+#         return 0.5 * a * b
+#
+#     @staticmethod
+#     def square_area(a):
+#         Square.count += 1
+#         return a * a
+#
+#     @staticmethod
+#     def square_rectangle(a, b):
+#         Square.count += 1
+#         return a * b
+#
+#     @staticmethod
+#     def get_count():
+#         return Square.count
+#
+#     def print_info(self):
+#         print(self, 'Hello')
+#
+#
+# area = Square()
+# area.print_info()
+# Square.print_info(area)
+# print(f'Площадь треугольника по формуле Гер'
+#       f'она: {Square.square_triangle1(3, 4, 5)}')
+# print(f'Площадь треугольника через основание и высоту:'
+#       f' {Square.square_triangle2(6, 7)}')
+# print(f'Площадь квадрата: {Square.square_area(7)}')
+# print(f'Площадь прямоугольника: {Square.square_rectangle(2, 6)}')
+# print(f'Количество подсчетов площади: {Square.get_count()}')
+
+
