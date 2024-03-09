@@ -111,7 +111,7 @@ class Account:
         print(f'Текущий баланс: {self.value} {Account.su_r}')
 
     def edit_owner(self, surname):
-        self.__surname = surname
+        self.surname = surname
 
     def add_percent(self):
         self.value += self.value * self.percent
@@ -149,7 +149,7 @@ Account.set_usd_rate(2)
 acc.convert_to_usd()
 Account.set_eur_rate(1)
 acc.convert_to_eur()
-acc.edit_owner('Дюма!')
+acc.edit_owner('Дюма')
 acc.print_info()
 acc.add_percent()
 print()

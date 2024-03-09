@@ -4226,30 +4226,483 @@ import time
 # print()
 # acc.withdraw_money(3000)
 
-import re
+# import re
+#
+#
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#         # self.verify_fio(fio)
+#         # self.verify_old(old)
+#         # self.verify_weight(weight)
+#         # self.verify_ps(ps)
+#
+#         self.fio = fio
+#         self.old = old
+#         self.password = ps
+#         self.weight = weight
+#
+#     @staticmethod
+#     def verify_fio(fio):
+#         if not isinstance(fio, str):
+#             raise TypeError('ФИО должно быть строкой')
+#         f = fio.split()  # ['Волков', 'Игорь', 'Николаевич']
+#         if len(f) != 3:
+#             raise TypeError('Неверный формат ФИО')
+#         # letters = ''.join(re.findall("[a-za-Яё-]", fio, re.IGNORECASE))
+#         # for s in f:
+#         if re.findall(r"[^a-za-яё\s-]", fio, re.IGNORECASE):
+#             raise TypeError('В ФИО можно использовать только буквы и дефис')
+#
+#     @staticmethod
+#     def verify_old(old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError('Возраст должен быть целым числом в диапазоне от '
+#                             '14 до 120 лет')
+#
+#     @staticmethod
+#     def verify_weight(weight):
+#         if not isinstance(weight, float) or weight < 20 or weight > 120:
+#             raise TypeError('Вес должен быть вещественным числом от 20 кг до '
+#                             '120кг')
+#
+#     @staticmethod
+#     def verify_ps(ps):
+#         if not isinstance(ps, str):
+#             raise TypeError('Паспорт должен быть строкой')
+#         s = ps.split()  # ['1234', '345678']
+#         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
+#             raise TypeError('Неверный формат паспорта')
+#         for p in s:
+#             if not p.isdigit():
+#                 raise TypeError('Серия и номер паспорта должны быть числами')
+#
+#     @property
+#     def fio(self):
+#         return self.__fio
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @property
+#     def password(self):
+#         return self.__password
+#
+#     @property
+#     def weight(self):
+#         return self.__weight
+#
+#     @fio.setter
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
+#
+#     @old.setter
+#     def old(self, old):
+#         self.verify_old(old)
+#         self.__old = old
+#
+#     @password.setter
+#     def password(self, ps):
+#         self.verify_ps(ps)
+#         self.__password = ps
+#
+#     @weight.setter
+#     def weight(self, weight):
+#         self.verify_weight(weight)
+#         self.__weight = weight
+#
+#
+# p1 = UserData('Волков Игорь Николаевич', 22, '1234 345678', 75.7)
+# p1.fio = 'Волков Игорь Анатольевич'
+# p1.old = 54
+# p1.password = '3411 544567'
+# p1.weight = 43.1
+# print(p1.fio)
+# print(p1.old)
+# print(p1.password)
+# print(p1.weight)
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f'({self.__x}, {self.__y})'
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1) -> None:
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self.__width = width
+#         print('Инициализатор базового класса Prop')
+#
+#     def get_width(self):
+#         return self.__width
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         super().__init__(*args)
+#         print('Переопределенный инициализатор Line')
+#         # Prop.__init__(self, *args)
+#
+#     def draw_line(self) -> None:
+#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}')
 
 
-class UserData:
-    def __init__(self, fio, old, ps, weight):
-        self.verify_fio(fio)
-
-        self.__fio = fio
-        self.__old = old
-        self.__password = ps
-        self.__weight = weight
-
-    @staticmethod
-    def verify_fio(fio):
-        if not isinstance(fio, str):
-            raise TypeError('ФИО должно быть строкой')
-        f = fio.split()  # ['Волков', 'Игорь', 'Николаевич']
-        if len(f) != 3:
-            raise TypeError('Неверный формат ФИО')
-        letters = ''.join(re.findall("[a-za-Яё-]", fio, re.IGNORECASE))
-        for s in f:
-            if len(s.strip(letters)) != 0:
-                raise TypeError('В ФИО можно использовать только буквы и дефис')
+# class Rect(Prop):
+#     def draw_rect(self):
+#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, '
+#               f'{self._width}')
 
 
-p1 = UserData('Волков Игорь Николаевич', 33, '1234 345678', 75.7)
+# line = Line(Point(1, 2), Point(10, 20), 'yellow', 5)
+# line.draw_line()
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+
+
+# DRY (Don't Repeat Yourself) - не повторяйся
+
+# class Figure:
+#     def __init__(self, color):
+#         self.__color = color
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#
+#     @color.setter
+#     def color(self, c):
+#         self.__color = c
+#
+#
+# class Rectangle(Figure):
+#     def __init__(self, width, height, color):
+#         self.width = width
+#         self.height = height
+#         super().__init__(color)
+#
+#     @property
+#     def width(self):
+#         return self.__width
+#
+#     @width.setter
+#     def width(self, w):
+#         if w > 0:
+#             self.__width = w
+#         else:
+#             raise ValueError('Некорректное значение ширины')
+#
+#     @property
+#     def height(self):
+#         return self.__height
+#
+#     @height.setter
+#     def height(self, h):
+#         if h > 0:
+#             self.__height = h
+#         else:
+#             raise ValueError('Некорректное значение высоты')
+#
+#     def area(self):
+#         print(f'Площадь {self.color} прямоугольника = ', end='')
+#         return self.__width * self.__height
+#
+#
+# rect = Rectangle(10, 20, 'green')
+# print(rect.area())
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f'({self.__x}, {self.__y})'
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1) -> None:
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coord(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print('Координаты должны быть числами')
+#
+#
+# class Line(Prop):
+#     def set_coord(self, sp, ep):
+#         if sp.is_int() and ep.is_int():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print('Координаты должны быть целочисленными значениями')
+#
+#     def draw_line(self) -> None:
+#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
+#
+# class Rect(Prop):
+#     def draw_rect(self):
+#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, '
+#               f'{self._width}')
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), 'yellow', 5)
+# line.set_coord(Point(15.6, 45), Point(100, 20))
+# line.draw_line()
+#
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.set_coord(Point(55.5, 45.5), Point(100, 200))
+# rect.draw_rect()
+
+
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def show_rec(self):
+#         print(f'Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}')
+#
+# class RectFon(Rect):
+#     def __init__(self, width, height, background):
+#         self.fon = background
+#         super().__init__(width, height)
+#
+#     def show_rec(self):
+#         super().show_rec()
+#         print('Фон:', self.fon)
+#
+#
+# class RectBorder(Rect):
+#     def __init__(self, width, height, border, line, color):
+#         super().__init__(width, height)
+#         self.border = border
+#         self.line = line
+#         self.color = color
+#
+#     def show_rect(self):
+#         super().show_rec()
+#         print(f'{self.show_border()} \n{self.show_line()} \n{self.show_color()}')
+#
+#
+#     def show_border(self):
+#         return f'Ширина границы: {self.border}'
+#
+#     def show_line(self):
+#         return f'Тип границы: {self.line}'
+#
+#     def show_color(self):
+#         return f'Цвет границы: {self.color}'
+#
+#
+# shape1 = RectFon(400, 200, 'yellow')
+# shape1.show_rec()
+# shape2 = RectBorder(600, 300, '1px', 'solid', 'red')
+# shape2.show_rect()
+
+
+# class Vector(list):
+#     def __init__(self, lst):
+#         self.lst = lst
+#
+#     def __str__(self):
+#         return ' '.join(map(str, self.lst))
+#
+#
+# v = Vector([1, 2, 3])
+# print(sum(v))
+# print(v)
+# print(type(v))
+
+
+# Перегрузка методов
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1) -> None:
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coord(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть числами")
+#
+#
+# class Line(Prop):
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#     def set_coord(self, sp=None, ep=None):
+#         if ep is None:
+#             if sp.is_int():
+#                 self._sp = sp
+#             else:
+#                 print('Координата sp должна быть целочисленным значением')
+#         elif sp is None:
+#             if ep.is_int():
+#                 self._ep = ep
+#             else:
+#                 print('Координата ep должна быть целочисленным значением')
+#         else:
+#             if sp.is_int() and ep.is_int():
+#                 self._sp = sp
+#                 self._ep = ep
+#             else:
+#                 print("Координаты должны быть целочисленными значениями")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), "yellow", 5)
+# line.draw_line()
+# line.set_coord(Point(15, 45), Point(100, 200))
+# line.draw_line()
+# line.set_coord(Point(55, 55))
+# line.draw_line()
+# line.set_coord(ep=Point(90, 20))
+# line.draw_line()
+
+
+# Абстрактные методы
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1) -> None:
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def draw(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод draw()")
+#
+#     def set_coord(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть числами")
+#
+#
+# class Line(Prop):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# class Rect(Prop):
+#     def draw(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# class Ellipse(Prop):
+#     def draw(self):
+#         print(f"Рисование эллипса: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# figs = list()
+# figs.append(Line(Point(0, 0), Point(10, 10)))
+# figs.append(Line(Point(10, 10), Point(20, 10)))
+# figs.append(Rect(Point(50, 50), Point(100, 100)))
+# figs.append(Ellipse(Point(-10, -10), Point(10, 10)))
+#
+# for f in figs:
+#     f.draw()
+
+# from math import pi
+#
+#
+# class Table:
+#     def __init__(self, width=None, length=None, radius=None):
+#         self._width = width
+#         self._length = length
+#         self._radius = radius
+#
+#
+# class Rectangle(Table):
+#     def __init__(self, width, length):
+#         super().__init__(width=width, length=length)
+#
+#     def show_res(self):
+#         return self._width * self._length
+#
+#
+# class Circle(Table):
+#     def __init__(self, radius):
+#         super().__init__(radius=radius)
+#
+#     def show_res(self):
+#         return round(pi * self._radius ** 2)
+#
+#
+# tables = [Rectangle(20, 10), Rectangle(20, 20), Circle(radius=20)]
+#
+# for t in tables:
+#     print(f'{}\nПлощадь стола: {t.show_res()}')
+
+
 
