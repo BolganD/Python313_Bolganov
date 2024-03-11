@@ -4705,4 +4705,299 @@ import time
 #     print(f'{}\nПлощадь стола: {t.show_res()}')
 
 
+# Абстрактные классы
 
+#
+# from abc import ABC, abstractmethod
+#
+#
+# class Chess(ABC):  # абстрактный класс
+#     def draw(self):
+#         print("Нарисовал шахматную фигуру")
+#
+#     @abstractmethod
+#     def move(self):
+#         print('Метод move() в базовом классе')
+#
+#
+# class Queen(Chess):
+#     # def move(self):
+#     #     super().move()
+#     #     print('Ферзь перемещен на e2e4')
+#     pass
+#
+#
+# # q = Chess()
+# q = Queen()
+# q.draw()
+# # q.move()
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Currency(ABC):
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_value(self):
+#         print(self.value, end=' ')
+#
+#     def show(self):
+#         print(f' =  {self.convert_to_rub():.2f} RUB')
+#
+#
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     suffix = 'USD'
+#
+#     def convert_to_rub(self):
+#         return self.value * Dollar.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end=' ')
+#
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = 'EUR'
+#
+#     def convert_to_rub(self):
+#         return self.value * Euro.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end=' ')
+#
+#
+# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+#
+# d += e
+# for elem in d:
+#     elem.print_value()
+#     elem.show()
+
+# for elem in e:
+#     elem.print_value()
+#     elem.show()
+
+
+# Интерфейсы
+
+# from abc import ABC, abstractmethod
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+#
+# class Child(Father):
+#     def display1(self):
+#         print('Child')
+#
+#
+# class GrandChild(Child):
+#     def display2(self):
+#         print('GrandChild')
+#
+#
+# gc = GrandChild()
+# gc.display2()
+# gc.display1()
+
+
+# Вложенные классы
+
+# def outer():
+#     a = 5
+#
+#     def inner():
+#         print(a)
+#
+#     inner()
+#
+# outer()
+
+
+# class MyOuter:
+#     age = 18
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @staticmethod
+#     def static_method():
+#         print('Статический метод')
+#
+#     def outer_method(self):
+#         print('метод в наружном классе')
+#
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print('Вложенный класс', MyOuter.age, self.obj.name)
+#             MyOuter.static_method()
+#             self.obj.outer_method()
+#
+#
+#
+# out = MyOuter('Дима')
+# inner = out.MyInner('внутренний', out)
+# print(inner.inner_name)
+# inner.inner_method()
+
+# class Color:
+#     def __init__(self):
+#         self.name = 'Green'
+#         self.lg = self.LightGreen()
+#
+#     def show(self):
+#         print('Name:', self.name)
+#
+#     class LightGreen:
+#         def __init__(self):
+#             self.name = 'Light Green'
+#
+#         def display(self):
+#             print('Name:', self.name)
+#
+#
+# outer = Color()
+# outer.show()
+# outer.lg.display()
+
+
+
+# class Intern:
+#     def __init__(self):
+#         self.name = 'Smith'
+#
+#     def display(self):
+#         print('Name:', self.name)
+#
+#
+# class Employee:
+#     def __init__(self):
+#         self.name = 'Employee'
+#         self.intern = Intern()
+#         self.head = self.Head()
+#
+#     def show(self):
+#         print('Name:', self.name)
+#
+#     class Head:
+#         def __init__(self):
+#             self.name = 'Alba'
+#
+#         def display(self):
+#             print('Name:', self.name)
+#
+#
+# outer = Employee()
+# outer.show()
+# d1 = outer.intern
+# d1.display()
+# d2 = outer.head
+# d2.display()
+
+
+# class Outer:
+#     def __init__(self):
+#         self.inner = self.Inner()
+#
+#     def show(self):
+#         print('Outer')
+#
+#     class Inner:
+#         def __init__(self):
+#             self.inner_inner = self.InnerClass()
+#
+#         def show(self):
+#             print('Inner')
+#
+#         class InnerClass:
+#
+#             def show(self):
+#                 print('InnerClass')
+#
+#
+# outer = Outer()
+# outer.show()
+# # inner1 = outer.inner
+# # inner1.show()
+# inner2 = outer.inner.inner_inner
+# inner2.show()
+
+
+# class Computer:
+#     def __init__(self):
+#         self.name = 'PC001'
+#         self.os = self.Os()
+#         self.cpu = self.CPU()
+#
+#     class Os:
+#         def system(self):
+#             return 'Windows 10'
+#
+#     class CPU:
+#         def make(self):
+#             return 'Intel'
+#
+#         def model(self):
+#             return 'Core-i7'
+#
+#
+# comp = Computer()
+# # my_os = comp.os
+# # my_cpu = comp.cpu
+# my_os = Computer.Os()
+# my_cpu = Computer.CPU()
+# print(f'{comp.name}:\nOs: {my_os.system()}\nCpu: {my_cpu.make()} {my_cpu.model()}')
+
+
+# class Student:
+#     def __init__(self, name):
+#         self.name = name
+#         self.i = self.Infor()
+#
+#     def show_infor(self):
+#         print(f'{self.name} => {self.i.m}, {self.i.p}, {self.i.me}')
+#
+#     class Infor:
+#         def __init__(self):
+#             self.m = 'HP'
+#             self.p = 'i7'
+#             self.me = '16'
+#
+#
+# show_students = Student('Roman')
+# show_students.show_infor()
+
+
+class Cat:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return f'{self.__class__}: {self.name}'
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+cat = [Cat('Пушок')]
+print(cat)
