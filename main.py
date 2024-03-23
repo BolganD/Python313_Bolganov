@@ -5264,86 +5264,280 @@ import math
 # 24 * 60 * 60 = 86400 - число секунд в одном дне
 
 
-class Clock:
-    DAY = 86400
+# class Clock:
+#     DAY = 86400
+#
+#     def __init__(self, sec):
+#         if not isinstance(sec, int):
+#             raise ValueError('Секунды должны быть целым числом')
+#         self.sec = sec % self.DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f'{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}'
+#
+#     @staticmethod
+#     def get_form(x):
+#         return str(x) if x > 9 else '0' + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError('Правый операнд должен быть типом Clock')
+#         return Clock(self.sec + other.sec)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError('Правый операнд должен быть типом Clock')
+#         return Clock(self.sec - other.sec)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError('Правый операнд должен быть типом Clock')
+#         return Clock(self.sec * other.sec)
+#
+#     def __floordiv__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError('Правый операнд должен быть типом Clock')
+#         return Clock(self.sec // other.sec)
+#
+#     def __mod__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError('Правый операнд должен быть типом Clock')
+#         return Clock(self.sec % other.sec)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError('Правый операнд должен быть типом Clock')
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __lt__(self, other):
+#         return self.sec < other.sec
+#
+#     def __le__(self, other):
+#         return self.sec <= other.sec
+#
+#     def __gt__(self, other):
+#         return self.sec > other.sec
+#
+#     def __ge__(self, other):
+#         return not self.__lt__(other)
+#
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError('Ключ должен быть строкой')
+#         hour_, min_, sec_ = self.get_format_time().split(':')
+#         time_key = {
+#             'hour': hour_,
+#             'min': min_,
+#             'sec': sec_,
+#         }
+#         try:
+#             return time_key[item]
+#         except KeyError:
+#             return 'Неверный ключ'
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError('Ключ должен быть строкой')
+#
+#         if not isinstance(value, int):
+#             raise ValueError('Значение должно быть целым числом')
+#
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#
+#         if key == 'hour':
+#             self.sec = s + 60 * m + value * 3600
+#         if key == 'min':
+#             self.sec = s + 60 * value + h * 3600
+#         if key == 'sec':
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(10000)
+# c2 = Clock(200)
+# print(c1.get_format_time())
+# print(c1['hour'], c1['min'], c1['sec'])
+# c1['hour'] = 11
+# c1['min'] = 39
+# c1['sec'] = 6
+# print(c1['hour'], c1['min'], c1['sec'])
+# print(c1.get_format_time())
+# sub_c = c1 - c2
+# mul_c = c1 * c2
+# floordiv_c = c1 // c2
+# mod_c = c1 % c2
+# print(f'c1: {c1.get_format_time()}')
+# print(f'c2: {c2.get_format_time()}')
+#
+# if c1 > c2:
+#     print(f'c1 > c2 {c1 > c2}')
+# else:
+#     print(f'c1 > c2 {c1 > c2}')
+#
+# if c1 >= c2:
+#     print(f'c1 >= c2 {c1 >= c2}')
+# else:
+#     print(f'c1 >= c2 {c1 >= c2}')
+#
+# if c1 < c2:
+#     print(f'c1 < c2 {c1 < c2}')
+# else:
+#     print(f'c1 < c2 {c1 < c2}')
+#
+# if c1 <= c2:
+#     print(f'c1 <= c2 {c1 <= c2}')
+# else:
+#     print(f'c1 <= c2 {c1 <= c2}')
+#
+#
+# c1 -= c2
+# print(f'c1 -= c2: {c1.get_format_time()}')
+# c1 *= c2
+# print(f'c1 *= c2: {c1.get_format_time()}')
+# c1 //= c2
+# print(f'c1 //= c2: {c1.get_format_time()}')
+# c1 %= c2
+# print(f'c1 % c2: {c1.get_format_time()}')
+#
+# if c1 == c2:
+#     print('Время равно')
+# else:
+#     print('Время разное')
+#
+# if c1 != c2:
+#     print('Время разное')
+# else:
+#     print('Время равно')
+#
+# if c1 < c2:
+#     print('c1 больше c2')
+# else:
+#     print('c1 не больше c2')
 
-    def __init__(self, sec):
-        if not isinstance(sec, int):
-            raise ValueError('Секунды должны быть целым числом')
-        self.sec = sec % self.DAY
 
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f'{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}'
+# class Student:
+#     def __init__(self, name, *marks):
+#         self.name = name
+#         self.marks = list(marks)
+#
+#     def __getitem__(self, item):  # проверяет индекс на отрицание s1[3]
+#         if 0 <= item <= len(self.marks):
+#             return self.marks[item]
+#         else:
+#             raise IndexError('Неверный индекс')
+#
+#     def __setitem__(self, key, value):  # изменяет s1[2]
+#         if not isinstance(key, int) or key < 0:
+#             raise TypeError('Индекс должен быть целым положительным числом')
+#
+#         if key >= len(self.marks):
+#             off = key + 1 - len(self.marks)  # 10 + 1 - 5 = 6
+#             self.marks.extend([None] * off)
+#
+#         self.marks[key] = value
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError('Индекс должен быть целым числом')
+#         if key not in range(len(self.marks)):
+#             return IndexError('Недопустимый индекс')
+#         del self.marks[key]
+#
+#
+# s1 = Student('Сергей', 5.8, 5.6, 3.2, 4.8, 5)
+# print(s1.name)
+# print(s1.marks)
+# print(s1.marks[2])
+# print(s1[3])
+# s1[17] = 17
+# s1[17] = 555
+# del s1[20]
+# print(s1.marks)
 
-    @staticmethod
-    def get_form(x):
-        return str(x) if x > 9 else '0' + str(x)
-
-    # def __add__(self, other):
-    #     if not isinstance(other, Clock):
-    #         raise ArithmeticError('Правый операнд должен быть типом Clock')
-    #     return Clock(self.sec + other.sec)
-
-    def __sub__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError('Правый операнд должен быть типом Clock')
-        return Clock(self.sec - other.sec)
-
-    def __mul__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError('Правый операнд должен быть типом Clock')
-        return Clock(self.sec * other.sec)
-
-    def __floordiv__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError('Правый операнд должен быть типом Clock')
-        return Clock(self.sec // other.sec)
-
-    def __mod__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError('Правый операнд должен быть типом Clock')
-        return Clock(self.sec % other.sec)
-
-
-c1 = Clock(1000)
-c2 = Clock(700)
-print(c1.get_format_time())
-sub_c = c1 - c2
-mul_c = c1 * c2
-floordiv_c = c1 // c2
-mod_c = c1 % c2
-print(f'c1 - c2: {sub_c.get_format_time()}')
-print(f'c1 * c2: {mul_c.get_format_time()}')
-print(f'c1 // c2: {floordiv_c.get_format_time()}')
-print(f'c1 % c2: {mod_c.get_format_time()}')
-c1 -= c2
-print(f'c1 -= c2: {c1.get_format_time()}')
-c1 *= c2
-print(f'c1 *= c2: {c1.get_format_time()}')
-c1 //= c2
-print(f'c1 //= c2: {c1.get_format_time()}')
-c1 %= c2
-print(f'c1 % c2: {c1.get_format_time()}')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# from random import choice, randint
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == 'M':
+#             return f'{self.name} is good boy!!!'
+#         elif self.pol == 'F':
+#             return f'{self.name} is good girl!!!'
+#         else:
+#             return f'{self.name} is good Kitty!!!'
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age}, pol='{self.pol}')"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat('No name', 0, choice(['M', 'F'])) for _ in range(randint(1, 5))]
+#         else:
+#             raise TypeError('Type are not supports!')
+#
+#
+# cat1 = Cat('Tom', 4, 'M')
+# cat2 = Cat('Elsa', 5, 'F')
+# cat3 = Cat('Murzik', 3, 'M')
+# print(cat1)
+# print(cat2)
+# print(cat1 + cat2)
 
 
+class Rectangle:
+    def __init__(self, w, h):
+        self.w = w
+        self.h = h
+
+    def get_perimetr(self):
+        return 2 * (self.w + self.h)
+
+
+class Square:
+    def __init__(self, a):
+        self.a = a
+
+    def get_perimetr(self):
+        return 4 * self.a
+
+
+class Triangle:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def get_perimetr(self):
+        return self.a + self.b + self.c
+
+
+r1 = Rectangle(1, 2)
+r2 = Rectangle(3, 4)
+
+s1 = Square(10)
+s2 = Square(20)
+
+t1 = Triangle(1, 2, 3)
+t2 = Triangle(4, 5, 6)
+
+
+shape = [r1, r2, s1, s2, t1, t2]
+
+for g in shape:
+    print(g.get_perimetr())
 
 
 
