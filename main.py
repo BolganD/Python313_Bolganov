@@ -5497,51 +5497,353 @@ import math
 # print(cat1 + cat2)
 
 
-class Rectangle:
-    def __init__(self, w, h):
-        self.w = w
-        self.h = h
+# class Rectangle:
+#     def __init__(self, w, h):
+#         self.w = w
+#         self.h = h
+#
+#     def get_perimetr(self):
+#         return 2 * (self.w + self.h)
+#
+#
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
+#
+#     def get_perimetr(self):
+#         return 4 * self.a
+#
+#
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimetr(self):
+#         return self.a + self.b + self.c
+#
+#
+# r1 = Rectangle(1, 2)
+# r2 = Rectangle(3, 4)
+#
+# s1 = Square(10)
+# s2 = Square(20)
+#
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
+#
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for g in shape:
+#     print(g.get_perimetr())
 
-    def get_perimetr(self):
-        return 2 * (self.w + self.h)
+
+# Функторы
+
+# class Counter:
+#     def __init__(self):
+#         self.__count = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.__count += 1
+#         print(self.__count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+# print()
+# c2 = Counter()
+# c2()
+# c2()
+# c2()
+# print()
+# c1()
+# c1()
+
+# class StripChars:
+#     def __init__(self, chars):
+#         self.__chars = chars
+#
+#     def __call__(self, string):
+#         if not isinstance(string, str):
+#             raise ValueError('Аргумент должен быть строкой')
+#         return string.strip(self.__chars)
+#
+#
+# s1 = StripChars('?:!.; ')
+# print(s1('Hello World!  '))
+#
+#
+# def strip_chars(chars):
+#     def wrap(string):
+#         if not isinstance(string, str):
+#             raise ValueError('Аргумент должен быть строкой')
+#         return string.strip(chars)
+#
+#     return wrap
+#
+#
+# s2 = strip_chars('?:!.; ')
+# print(s2('Hello World!  '))
 
 
-class Square:
-    def __init__(self, a):
-        self.a = a
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self):
+#         print('Перед вызовом функции')
+#         self.func()
+#         print('После вызова функции')
+#
+#
+# @MyDecorator
+# def function():
+#     print('Текст функции')
+#
+#
+# function()
 
-    def get_perimetr(self):
-        return 4 * self.a
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, x, y):
+#         # print('Перед вызовом функции')
+#         # res = self.func(x, y)
+#         # print('После вызова функции')
+#         return f'Перед вызовом функции\n {self.func(x, y)}\nПосле вызова функции'
+#
+#
+# @MyDecorator
+# def function(a, b):
+#     return a * b
+#
+#
+# print(function(2, 5))
 
 
-class Triangle:
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
+# class Power:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, x, y):
+#         return f'Результат: {self.func(x, y) ** 2}'
+#
+#
+# @Power
+# def fc(a, b):
+#     return a * b
+#
+#
+# print(fc(2, 3))
+
+
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.name = arg
+#
+#     def __call__(self, func):
+#         def wrap(*args, **kwargs):
+#             return (f'Перед вызовом функции ({self.name})\n {func(*args, **kwargs)}\nПосле вызова '
+#                     f'функции')
+#
+#         return wrap
+#
+#
+# @MyDecorator('два параметра')
+# def function(a, b):
+#     return a * b
+#
+#
+# @MyDecorator('три параметра')
+# def function1(a, b, c):
+#     return a * b * c
+
+#
+# print(function(2, 5))
+#
+# print(function1(2, 5, 2))
+
+
+# class Power:
+#     def __init__(self, num):
+#         if not isinstance(num, int):
+#             raise ValueError('Степень должна быть целым числом')
+#         self.num = num
+#
+#     def __call__(self, f):
+#         def wrap(*args, **kwargs):
+#             return f'Результат: {f(*args, **kwargs) ** self.num}'
+#
+#         return wrap
+#
+#
+# @Power(3)
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 2))
+
+
+# Декорирование методов
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f'{self.name} {self.surname}')
+#
+#
+# p1 = Person('Виталий', 'Громов')
+# p1.info()
+
+# def decorator(arg):
+#     class Wrapper(arg):
+#         def doubler(self, value):
+#             return value * 2
+#
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self, num):
+#         print('Инициализатор ActualClass')
+#
+#     def quad(self, value):
+#         return value * 4
+#
+#
+# obj = ActualClass(5)
+# print(obj.quad(4))
+# print(obj.doubler(4))
+
+
+# Дескрипторы (__get__, __set__, __delete__, __set_name__)
+
+# class String:
+#     def __init__(self, value=None):
+#         print(f'Инициализатор String: {value}')
+#         if value:
+#             self.set(value)
+#
+#     def set(self, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f'{value} должно быть строкой')
+#         self.__value = value
+#
+#     def get(self):
+#         return self.__value
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = String(name)
+#         self.surname = String(surname)
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     if not isinstance(value, str):
+#     #         raise ValueError(f'{value} должно быть строкой')
+#     #     else:
+#     #         self.__name = value
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     if not isinstance(value, str):
+#     #         raise ValueError(f'{value} должно быть строкой')
+#     #     else:
+#     #         self.__surname = value
+#
+#
+# p = Person('Ivan', 'Petrov')
+# # p.name = 56
+# # print(p.name, p.surname)
+# p.surname.set(54)
+
+
+# class ValidString:
+#     def __set_name__(self, person, name):
+#         # print(owner)
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         print(instance)
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f'{self.__name} должно быть строкой')
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+# p = Person('Ivan', 'Petrov')
+# # p.surname = '5'
+# print(p.name, p.surname)
+# print(p.__dict__)
+
+class ValidOrd:
+    def __set_name__(self, owner, name):
+        self.__name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.__name]
+
+    def __set__(self, instance, value):
+        if not isinstance(value, int) or value < 0:
+            raise ValueError(f'{self.__name} должно быть целым положительным числом')
+        instance.__dict__[self.__name] = value
+
+
+class Order:
+    price = ValidOrd()
+    c = ValidOrd()
+
+    def __init__(self, name, price, c):
+        self.name = name
+        self.price = price
         self.c = c
 
-    def get_perimetr(self):
-        return self.a + self.b + self.c
+    def all_c(self):
+        return self.price * self.c
 
 
-r1 = Rectangle(1, 2)
-r2 = Rectangle(3, 4)
-
-s1 = Square(10)
-s2 = Square(20)
-
-t1 = Triangle(1, 2, 3)
-t2 = Triangle(4, 5, 6)
-
-
-shape = [r1, r2, s1, s2, t1, t2]
-
-for g in shape:
-    print(g.get_perimetr())
-
-
-
-
-
-
-
+o = Order('apple', 5, 10)
+# print(o.__dict__)
+print(f'{o.all_c()}')
