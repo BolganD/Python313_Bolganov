@@ -3527,7 +3527,6 @@ import os
 
 import time
 
-
 #
 # path = 'main.py'
 # # print(f"{os.path.getsize('main.py')} bytes")
@@ -5818,32 +5817,197 @@ import math
 # print(p.name, p.surname)
 # print(p.__dict__)
 
-class ValidOrd:
-    def __set_name__(self, owner, name):
-        self.__name = name
+# class ValidOrd:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, int) or value < 0:
+#             raise ValueError(f'{self.__name} должно быть целым положительным числом')
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Order:
+#     price = ValidOrd()
+#     c = ValidOrd()
+#
+#     def __init__(self, name, price, c):
+#         self.name = name
+#         self.price = price
+#         self.c = c
+#
+#     def all_c(self):
+#         return self.price * self.c
+#
+#
+# o = Order('apple', 5, 10)
+# # print(o.__dict__)
+# print(f'{o.all_c()}')
 
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.__name]
 
-    def __set__(self, instance, value):
-        if not isinstance(value, int) or value < 0:
-            raise ValueError(f'{self.__name} должно быть целым положительным числом')
-        instance.__dict__[self.__name] = value
+# class Integer:
+#
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f'Координата {coord} должна быть целым числом')
+#
+#     def __set_name__(self, owner, name):
+#         self.__name = '_' + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.__name]
+#         return getattr(instance, self.__name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         # instance.__dict__[self.__name] = value
+#         setattr(instance, self.__name, value)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# p1.x = 20
+# print(p1.x)
+# print(p1.__dict__)
 
 
-class Order:
-    price = ValidOrd()
-    c = ValidOrd()
+# Метаклассы
 
-    def __init__(self, name, price, c):
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+#
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(8)
+# print(lst, lst.get_length())
+#
+#
+# MyList1 = type(
+#     'MyList1',
+#     (list,),
+#     dict(get_length=lambda self: len(self))
+# )
+#
+#
+# lst1 = MyList1()
+# lst1.append(5)
+# lst1.append(8)
+# print(lst1, lst1.get_length())
+#
+# print(MyList.__dict__)
+# print(MyList1.__dict__)
+
+
+# from geometry import rect, sq, trian
+#
+#
+# # import geometry  # работать не будет
+# # from geometry import *
+#
+#
+# def run():
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print(g.get_perimetr())
+#
+#
+# if __name__ == '__main__':
+#     run()
+
+
+# from car.electrocar import ElectroCar
+#
+# e_car = ElectroCar('Tesla', 'T', 2018, 99000)
+# e_car.show_car()
+# e_car.description_battery()
+
+
+class PayrollSystem:
+    def calculate(self, employees):
+        print('Расчет заработной платы:')
+        print('=' * 50)
+        for employee in employees:
+            print(f'Заработная плата: {employee.id}, {employee.name}')
+            print(f'- Проверить сумму: {employee.calculate_payroll()}')
+            print()
+        print('=' * 50)
+
+
+class Employee:
+    def __init__(self, id_em, name):
+        self.id = id_em
         self.name = name
-        self.price = price
-        self.c = c
-
-    def all_c(self):
-        return self.price * self.c
 
 
-o = Order('apple', 5, 10)
-# print(o.__dict__)
-print(f'{o.all_c()}')
+class SalaryEmployee(Employee):
+    """Административные работники с фиксированной зп"""
+    def __init__(self, id_em, name, weekly_salary):
+        super().__init__(id_em, name)
+        self.weekly_salary = weekly_salary
+
+    def calculate_payroll(self):
+        return self.weekly_salary
+
+
+class HourlyEmployee(Employee):
+    """Сотрудники с почасовой оплатой"""
+    def __init__(self, id_em, name, hours_worked, hour_rate):
+        super().__init__(id_em, name)
+        self.hours_worked = hours_worked
+        self.hour_rate = hour_rate
+
+    def calculate_payroll(self):
+        return self.hours_worked * self.hour_rate
+
+
+class FixEmployee(SalaryEmployee):
+    """Сотрудники с фиксированной оплатой + комиссия"""
+    def __init__(self, id_em, name, weekly_salary, comm):
+        super().__init__(id_em, name, weekly_salary)
+        self.comm = comm
+
+    def calculate_payroll(self):
+        return self.weekly_salary + self.comm
+
+
+salary_em1 = SalaryEmployee(1, 'Валерий Задорожный', 1500)
+hourly_employee1 = HourlyEmployee(2, 'Илья Кромин', 40, 15)
+fix_em3 = FixEmployee(3, 'Николай Хорольский', 1000, 250)
+payroll_system = PayrollSystem()
+payroll_system.calculate([
+    salary_em1,
+    hourly_employee1,
+    fix_em3
+])
