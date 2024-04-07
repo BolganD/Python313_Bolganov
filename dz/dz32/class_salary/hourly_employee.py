@@ -1,7 +1,7 @@
-from class_salary import employee
+from dz.dz32.class_salary.employee import Employee
 
 
-class HourlyEmployee(employee.Employee):
+class HourlyEmployee(Employee):
     """Сотрудники с почасовой оплатой"""
     def __init__(self, id_em, name, hours_worked, hour_rate):
         super().__init__(id_em, name)

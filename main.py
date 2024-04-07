@@ -5954,60 +5954,249 @@ import math
 # e_car.description_battery()
 
 
-class PayrollSystem:
-    def calculate(self, employees):
-        print('Расчет заработной платы:')
-        print('=' * 50)
-        for employee in employees:
-            print(f'Заработная плата: {employee.id}, {employee.name}')
-            print(f'- Проверить сумму: {employee.calculate_payroll()}')
-            print()
-        print('=' * 50)
+# class PayrollSystem:
+#     def calculate(self, employees):
+#         print('Расчет заработной платы:')
+#         print('=' * 50)
+#         for employee in employees:
+#             print(f'Заработная плата: {employee.id}, {employee.name}')
+#             print(f'- Проверить сумму: {employee.calculate_payroll()}')
+#             print()
+#         print('=' * 50)
+#
+#
+# class Employee:
+#     def __init__(self, id_em, name):
+#         self.id = id_em
+#         self.name = name
+#
+#
+# class SalaryEmployee(Employee):
+#     """Административные работники с фиксированной зп"""
+#     def __init__(self, id_em, name, weekly_salary):
+#         super().__init__(id_em, name)
+#         self.weekly_salary = weekly_salary
+#
+#     def calculate_payroll(self):
+#         return self.weekly_salary
+#
+#
+# class HourlyEmployee(Employee):
+#     """Сотрудники с почасовой оплатой"""
+#     def __init__(self, id_em, name, hours_worked, hour_rate):
+#         super().__init__(id_em, name)
+#         self.hours_worked = hours_worked
+#         self.hour_rate = hour_rate
+#
+#     def calculate_payroll(self):
+#         return self.hours_worked * self.hour_rate
+#
+#
+# class FixEmployee(SalaryEmployee):
+#     """Сотрудники с фиксированной оплатой + комиссия"""
+#     def __init__(self, id_em, name, weekly_salary, comm):
+#         super().__init__(id_em, name, weekly_salary)
+#         self.comm = comm
+#
+#     def calculate_payroll(self):
+#         return self.weekly_salary + self.comm
+#
+#
+# salary_em1 = SalaryEmployee(1, 'Валерий Задорожный', 1500)
+# hourly_employee1 = HourlyEmployee(2, 'Илья Кромин', 40, 15)
+# fix_em3 = FixEmployee(3, 'Николай Хорольский', 1000, 250)
+# payroll_system = PayrollSystem()
+# payroll_system.calculate([
+#     salary_em1,
+#     hourly_employee1,
+#     fix_em3
+# ])
 
 
-class Employee:
-    def __init__(self, id_em, name):
-        self.id = id_em
-        self.name = name
+# Упаковка данных
+
+# сериализация, десериализация
+# pickle
+# json
+
+# dump() - сохраняет данные в открытый файл
+# dumps() - сохраняет данные в строку
+# load() - считывает данные из файла
+# loads() - считывает данные из строки
 
 
-class SalaryEmployee(Employee):
-    """Административные работники с фиксированной зп"""
-    def __init__(self, id_em, name, weekly_salary):
-        super().__init__(id_em, name)
-        self.weekly_salary = weekly_salary
-
-    def calculate_payroll(self):
-        return self.weekly_salary
+# import pickle
 
 
-class HourlyEmployee(Employee):
-    """Сотрудники с почасовой оплатой"""
-    def __init__(self, id_em, name, hours_worked, hour_rate):
-        super().__init__(id_em, name)
-        self.hours_worked = hours_worked
-        self.hour_rate = hour_rate
-
-    def calculate_payroll(self):
-        return self.hours_worked * self.hour_rate
-
-
-class FixEmployee(SalaryEmployee):
-    """Сотрудники с фиксированной оплатой + комиссия"""
-    def __init__(self, id_em, name, weekly_salary, comm):
-        super().__init__(id_em, name, weekly_salary)
-        self.comm = comm
-
-    def calculate_payroll(self):
-        return self.weekly_salary + self.comm
+# file_name = 'basket.txt'
+# shop_list = {
+#     'фрукты': ['яблоки', 'манго'],
+#     'овощи': ['морковь'],
+#     'бюджет': 1000
+# }
+#
+# with open(file_name, 'wb') as fh:
+#     pickle.dump(shop_list, fh)
+#
+# with open(file_name, 'rb') as fh:
+#     shop_list_2 = pickle.load(fh)
+#
+# print(shop_list_2)
 
 
-salary_em1 = SalaryEmployee(1, 'Валерий Задорожный', 1500)
-hourly_employee1 = HourlyEmployee(2, 'Илья Кромин', 40, 15)
-fix_em3 = FixEmployee(3, 'Николай Хорольский', 1000, 250)
-payroll_system = PayrollSystem()
-payroll_system.calculate([
-    salary_em1,
-    hourly_employee1,
-    fix_em3
-])
+# class Test:
+#     num = 35
+#     str = 'привет'
+#     lst = [1, 2, 3, 5]
+#     tpl = (22, 23)
+#
+#     def __str__(self):
+#         return f'Число: {Test.num}\nСтрока: {Test.str}\nСписок: {Test.lst}\nКортеж: {Test.tpl}'
+#
+#
+# obj = Test()
+# obj1 = pickle.dumps(obj)
+# print(f"Сериализация в строку: {obj1}")
+#
+# obj2 = pickle.loads(obj1)
+# print(f"Десериализация из строки:\n{obj2}")
+
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = 'test'
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f'{self.a} {self.b} {self.c(5)}'
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+# print(item3.__dict__)
+# print(item3)
+
+
+# data = {
+#     'name': 'Olga',
+#     'age': 35,
+#     '20': None,
+#     'hobbies': ('running', 'singing'),
+#     'children': [
+#         {
+#             'first_name': 'Alice',
+#             'True': 1
+#         }
+#     ]
+# }
+#
+# # file_name = "data_file.json"
+# #
+# # with open(file_name, "w") as fw:
+# #     json.dump(data, fw, indent=4)
+# #
+# # with open(file_name, 'r') as fw:
+# #     data1 = json.load(fw)
+# #
+# # print(data1)
+#
+# json_string = json.dumps(data, sort_keys=True)
+# print(json_string)
+# print(type(json_string))
+# data1 = json.loads(json_string)
+#
+# print(data1['hobbies'])
+# print(type(data1))
+
+
+#
+# x = {
+#     'name': 'Виктор'
+# }
+# print(json.dumps(x))
+# print(json.loads(json.dumps(x)))
+# print(json.dumps(x, ensure_ascii=False))
+
+
+
+
+
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         a = ', '.join(map(str, self.marks))
+#         return f'Группа: {self.name}: {a}'
+#
+#
+# st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# print(st1)
+
+
+import json
+from random import choice
+
+
+def gen_person():
+
+    name = ''
+    tel = ''
+
+    letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'e']
+    num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+    while len(name) != 7:
+        name += choice(letter)
+
+    while len(tel) != 10:
+        tel += choice(num)
+
+    person = {
+        'name': name,
+        'tel': tel
+    }
+    return person
+
+
+def write_json(person_dict):
+    idd = ''
+    d_num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    while len(idd) != 11:
+        idd += choice(d_num)
+
+    try:
+        data = json.load(open('person.json'))
+    except FileNotFoundError:
+        data = {}
+
+    d = person_dict
+    data[idd] = d
+    with open('person.json', 'w') as f:
+        json.dump(data, f, indent=2)
+
+
+for i in range(5):
+    write_json(gen_person())
+
+# main_dict = {}
+#
+# dict1 = {'key1': 'value1', 'key2': 'value2'}
+# dict2 = {'key3': 'value3', 'key4': 'value4'}
+#
+# main_dict['dict1'] = dict1
+# main_dict['dict2'] = dict2
+#
+# print(main_dict)

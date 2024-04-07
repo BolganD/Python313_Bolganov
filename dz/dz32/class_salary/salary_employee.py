@@ -1,7 +1,7 @@
-from class_salary import employee
+from dz.dz32.class_salary.employee import Employee
 
 
-class SalaryEmployee(employee.Employee):
+class SalaryEmployee(Employee):
     """Административные работники с фиксированной зп"""
 
     def __init__(self, id_em, name, weekly_salary):
