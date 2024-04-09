@@ -5014,6 +5014,7 @@ import time
 
 import math
 
+
 # class Point:
 #     __slots__ = ('x', 'y', '__length')
 #
@@ -6128,10 +6129,64 @@ import math
 # print(json.loads(json.dumps(x)))
 # print(json.dumps(x, ensure_ascii=False))
 
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#
+#     name = ''
+#     tel = ''
+#
+#     letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'e']
+#     num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letter)
+#
+#     while len(tel) != 10:
+#         tel += choice(num)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person
+#
+#
+# def write_json(person_dict):
+#     idd = ''
+#     d_num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#     while len(idd) != 11:
+#         idd += choice(d_num)
+#
+#     try:
+#         data = json.load(open('person.json'))
+#     except FileNotFoundError:
+#         data = {}
+#
+#     d = person_dict
+#     data[idd] = d
+#     with open('person.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
+#
+# # main_dict = {}
+# #
+# # dict1 = {'key1': 'value1', 'key2': 'value2'}
+# # dict2 = {'key3': 'value3', 'key4': 'value4'}
+# #
+# # main_dict['dict1'] = dict1
+# # main_dict['dict2'] = dict2
+# #
+# # print(main_dict)
 
-
-
-
+# import json
+#
+#
 # class Student:
 #     def __init__(self, name, marks):
 #         self.name = name
@@ -6139,64 +6194,125 @@ import math
 #
 #     def __str__(self):
 #         a = ', '.join(map(str, self.marks))
-#         return f'Группа: {self.name}: {a}'
+#         return f'Студент: {self.name}: {a}'
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#         return self.marks
+#
+#     def delete_mark(self, i):
+#         self.marks.pop(i)
+#         return self.marks
+#
+#     def edit_mark(self, i, new_mark):
+#         self.marks[i] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     def dump_to_json(self, file_name):
+#         data = {'name': self.name, 'marks': self.marks}
+#         with open(file_name, 'w') as f:
+#             json.dump(data, f)
+#
+#     def load_from_file(self, file_name):
+#         with open(file_name, 'r') as f:
+#             print(json.load(f))
+#
+#     def get_file_name(self):
+#         return self.name + '.json'
+#
+#
+# class Group:
+#     def __init__(self, students, group: str):
+#         self.students = students  # [st1, st2]
+#         self.group: str = group
+#
+#     def __str__(self):
+#         a = '\n'.join(map(str, self.students))
+#         return f'\nГруппа: {self.group}\n{a}'
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, i):
+#         self.students.pop(i)
+#
+#     @staticmethod
+#     def change_group(group_1, group_2, ix):
+#         group_2.add_student(group_1.remove_student(ix))
+#
+#     def dump_to_json(self):
+#         data = [
+#                 {'name': student.name, 'marks': student.marks} for student in self.students
+#             ]
+#         with open(self.get_file_name(), 'w') as file:
+#             json.dump(data, file, indent=2)
+#
+#     def get_file_name(self):
+#         return self.group.lower().replace(' ', '-') + '.json'
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), 'r') as f:
+#             print(json.load(f))
 #
 #
 # st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
-# print(st1)
+# st2 = Student('Nikolaev', [3, 3, 4, 4, 2, 3])
+# st3 = Student('Dolgov', [4, 5, 3, 3, 4, 3])
+# sts1 = [st1, st2]
+# group1 = Group(sts1, 'ГК Python')
+# # # print(group1)
+# group1.add_student(st3)
+# # print(group1)
+# group1.remove_student(1)
+# # print(group1)
+# sts2 = [st2]
+# group2 = Group(sts2, 'ГК Web')
+# print(group2)
+# Group.change_group(group1, group2, 0)
+# # print(group1)
+# #
+# # print(group2)
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(4)
+# # print(st1)
+# # st1.edit_mark(4, 5)
+# # print(st1)
+# # print(st1.average_mark())
+# # st1.add_mark(5)
+# # st1.dump_to_json('student1.json')
+# # st1.load_from_file('student1.json')
+# group2.dump_to_json()
+# group2.load_from_file()
 
 
 import json
-from random import choice
+
+data = {}
 
 
-def gen_person():
+class CountryCapital:
+    @staticmethod
+    def add_country(file_name):
+        new_country = input('Введите название страны: ')
+        new_capital = input('Введите название столицы: ')
 
-    name = ''
-    tel = ''
+        data[new_country] = new_capital
 
-    letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'e']
-    num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-
-    while len(name) != 7:
-        name += choice(letter)
-
-    while len(tel) != 10:
-        tel += choice(num)
-
-    person = {
-        'name': name,
-        'tel': tel
-    }
-    return person
+        with open(file_name, 'w') as f:
+            json.dump(data, f, indent=2)
 
 
-def write_json(person_dict):
-    idd = ''
-    d_num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-    while len(idd) != 11:
-        idd += choice(d_num)
-
-    try:
-        data = json.load(open('person.json'))
-    except FileNotFoundError:
-        data = {}
-
-    d = person_dict
-    data[idd] = d
-    with open('person.json', 'w') as f:
-        json.dump(data, f, indent=2)
-
-
-for i in range(5):
-    write_json(gen_person())
-
-# main_dict = {}
-#
-# dict1 = {'key1': 'value1', 'key2': 'value2'}
-# dict2 = {'key3': 'value3', 'key4': 'value4'}
-#
-# main_dict['dict1'] = dict1
-# main_dict['dict2'] = dict2
-#
-# print(main_dict)
+file = 'list_capital.json'
+while True:
+    index = input('Выбор действия:\n1 - добавление данных\n2 - удаление данных\n3 - поиск данных\n'
+                  '4 - редактирование данных\n5 - просмотр данных\n6 - завершение работы\nВвод: ')
+    if index == '1':
+        ...
+    elif index == '6':
+        break
+    else:
+        print('Введен некорректный номер')
