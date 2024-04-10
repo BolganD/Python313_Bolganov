@@ -93,11 +93,11 @@ st1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
 st2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
 st3 = Student("Birukov", [3, 5, 3, 2, 5, 4])
 sts1 = [st1, st2]
-group1 = Group(sts1, "GK Python")
+group1 = Group(sts1, "ГК Python")
 group1.add_student(st3)
 group1.remove_student(1)
 sts2 = [st2]
-group2 = Group(sts2, "GK Web")
+group2 = Group(sts2, "ГК Web")
 Group.change_group(group1, group2, 0)
 print(group1)
 print(group2)
