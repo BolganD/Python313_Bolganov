@@ -6601,28 +6601,172 @@ import math
 # for i in salary:
 #     get_salary(i.text)
 
-from bs4 import BeautifulSoup
-import requests
+# from bs4 import BeautifulSoup
+# import requests
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'html.parser')
+#     p1 = soup.find('section', class_='section1').find('div', class_='left').find('h1').text
+#     p2 = soup.find('section', class_='section4').find('div', class_='center').find('div', class_='text').text
+#     p3 = [soup.find('section', class_='section2').find('div', class_='content').find('h2').text,
+#           soup.find('section', class_='section2').find('div', class_='info').text]
+#
+#     return f'{p1}\n{p2}\n{p3[0]}\n{p3[1]}'
+#
+#
+# def main():
+#     url = 'https://teremok-rm.ru/'
+#     print(get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')
+#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
+#     return p1
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/"
+#     print(get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# import csv
+# import re
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     res = re.sub(r'\D+', '', s)
+#     return res
+#
+#
+# def write_csv(data):
+#     with open('plugins.csv', 'a') as f:
+#         writer = csv.writer(f, delimiter=';', lineterminator='\r')
+#         writer.writerow((data['name'], data['url'], data['rating']))
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')
+#     s = soup.find_all('section', class_='plugin-section')[1]
+#     plugins = s.find_all('article')
+#
+#     for plugin in plugins:
+#         name = plugin.find('h3').text
+#         url = plugin.find('h3').find('a').get('href')
+#         rating = plugin.find('span', class_='rating-count').find('a').text
+#         r = refined(rating)
+#         data = {'name': name, 'url': url, 'rating': r}
+#         write_csv(data)
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/plugins/"
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+# def write_csv(data):
+#     with open('plugins1.csv', 'a', encoding='utf-8') as f:
+#         writer = csv.writer(f, delimiter=';', lineterminator='\r')
+#         writer.writerow((data['name'], data['url'], data['snippet'], data['active'], data['cy']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')
+#     elements = soup.find_all('article')
+#     for el in elements:
+#         try:
+#             name = el.find('h3').text
+#         except AttributeError:
+#             name = ''
+#
+#         try:
+#             url = el.find('h3').find('a')['href']
+#         except AttributeError:
+#             url = ''
+#
+#         try:
+#             snippet = el.find('div', class_='entry-excerpt').text.strip()
+#         except AttributeError:
+#             snippet = ''
+#
+#         try:
+#             active = el.find('span', class_='active-installs').text.strip()
+#         except AttributeError:
+#             active = ''
+#
+#         try:
+#             c = el.find('span', class_='tested-with').text.strip()
+#             cy = refine_cy(c)
+#         except AttributeError:
+#             cy = ''
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'snippet': snippet,
+#             'active': active,
+#             'cy': cy
+#         }
+#         write_csv(data)
+#
+# def main():
+#     for i in range(1, 25):
+#         url = f"https://ru.wordpress.org/plugins/browse/blocks/{i}/"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
-
-def get_data(html):
-    soup = BeautifulSoup(html, 'html.parser')
-    p1 = soup.find('section', class_='section1').find('div', class_='left').find('h1').text
-    p2 = soup.find('section', class_='section4').find('div', class_='center').find('div', class_='text').text
-    p3 = [soup.find('section', class_='section2').find('div', class_='content').find('h2').text,
-          soup.find('section', class_='section2').find('div', class_='info').text]
-
-    return f'{p1}\n{p2}\n{p3[0]}\n{p3[1]}'
+from parsers import Parser
 
 
 def main():
-    url = 'https://teremok-rm.ru/'
-    print(get_data(get_html(url)))
+    url = 'https://teremok-rm.ru/karkasnye-doma/'
+    pars = Parser(url, 'dz_37.txt')
+    pars.run()
 
 
 if __name__ == '__main__':
