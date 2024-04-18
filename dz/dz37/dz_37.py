@@ -3,7 +3,7 @@ from parse import Parser
 
 def main():
     url = "https://rutor-gamer.info/games/page/{}/"
-    pars = Parser(url, "hw_game37.txt")
+    pars = Parser(url, "dz_37.txt")
     pars.run()
 
 
