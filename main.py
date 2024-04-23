@@ -6759,15 +6759,28 @@ import math
 #
 # if __name__ == '__main__':
 #     main()
+#
+# from parsers import Parser
+#
+#
+# def main():
+#     url = 'https://teremok-rm.ru/karkasnye-doma/'
+#     pars = Parser(url, 'dz_37.txt')
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+#
 
-from parsers import Parser
+
+# articles
+    # project_articles.py
+    # controller.py
+    # view
+    # model
 
 
-def main():
-    url = 'https://teremok-rm.ru/karkasnye-doma/'
-    pars = Parser(url, 'dz_37.txt')
-    pars.run()
 
 
-if __name__ == '__main__':
-    main()
+

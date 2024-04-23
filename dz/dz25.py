@@ -23,7 +23,7 @@ class Rectangle:
             print('*' * self.wig)
 
 
-show_rec = Rectangle(3, 9)
+show_rec = Rectangle(3, 100)
 show_rec.show_len_wig()
 show_rec.find_square()
 show_rec.find_per()
