@@ -1,0 +1,101 @@
+1.
+SELECT ID AS "Код по магазину", Produce AS 'название продукта',
+Material AS материал, color цвет, Country AS [страна производитель], Price цена, Count
+количество, REM модель
+FROM Ware
+WHERE ID_salespeople IS NULL
+
+2.
+SELECT Produce, ID_salespeople, Country
+FROM Ware
+Where Country LIKE 'Беларусь'
+
+3.
+DELETE FROM Ware
+Where Country LIKE 'Германия'
+
+4.
+UPDATE Ware
+SET Country = 'Россия'
+Where Country LIKE 'Польша'
+
+5.
+
+
+6.
+SELECT Produce, Price, ID, Color
+FROM Ware
+Where Color NOT LIKE 'ч'
+
+7.
+INSERT INTO Ware(ID, Produce, Material, Color, Size, Country, ID_salespeople)
+Values (1046, 'NTX-117BK Micro Camera Case', "нейлон", 'ч', "13,3x8,3x5,7", 'Беларусь', 2016)
+
+8.
+INSERT INTO Ware(ID, Produce, Material, Color, Size, REM)
+Values (1236, 'POC-463BK', "полиэстер", 'ч', "11x7x4,5", 'Compact Camera Case')
+
+9.
+SELECT *
+FROM WARE
+WHERE ID_salespeople LIKE 2065 AND COUNTRY LIKE 'Россия'
+
+10.
+SELECT *
+FROM WARE
+WHERE Price BETWEEN 200 AND 345
+
+11.
+SELECT *
+FROM WARE
+WHERE Material LIKE 'кожа' AND SIZE > '40x30x5'
+
+12.
+SELECT Produce, Material, ID_salespeople
+FROM Ware
+WHERE (Price * Count) < 1200
+
+13.
+UPDATE WARE
+SET ID_salespeople = 2000
+WHERE (Price * Count) < 500
+
+14.
+SELECT Produce, Material, Price, Count
+FROM Ware
+WHERE Count < 5 AND (Price * Count) < 450
+
+15.
+SELECT Produce, Material, Price, Count
+FROM Ware
+WHERE Material IS 'нейлон' AND Price <= 250
+
+16.
+UPDATE Ware
+SET Material = 'брезент'
+WHERE Material IS 'нейлон' AND Price < 200
+
+18.
+SELECT Produce, Material, Price, Country
+FROM Ware
+WHERE Material IS 'кожа' AND Color LIKE 'ч' AND Country IS 'Китай'
+
+19.
+SELECT Produce, Material, Size
+FROM Ware
+WHERE Size > 15
+
+20.
+SELECT *
+FROM Ware
+WHERE Color NOT LIKE 'ч'
+
+21.
+UPDATE Ware
+SET Material = 'нейлон'
+WHERE Material IS 'полиэстер' AND Country IS 'Китай' 
+
+22.
+UPDATE Ware
+SET Material = 'полиэстер'
+WHERE ID IN(1015, 1041, 1032, 1010) AND Material IS 'нейлон' AND Country IS 'Китай'
