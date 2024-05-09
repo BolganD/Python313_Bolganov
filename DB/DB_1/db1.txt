@@ -28,6 +28,49 @@ UPDATE
 SET
 
 
+декартовое произведение (все возможные комбинации одной таблицы с каждой строкой друго таблицы)
+
+функции агрегирования
+SUM (только числовые типы)
+AVG (только числовые типы)
+COUNT 
+MIN
+MAX
+
+GROUP BY (группировать по)
+HAVING (условие)
+
+
+
+/*SELECT s.Seller, sg.Goods
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller*/
+/*
+SELECT c.Client, s.Seller
+FROM Seller s, SallerGoods sg, Client c, ClientGoods cg
+WHERE s.INNSeller=sg.INNSeller AND cg.ID=sg.ID and c.INNClient=cg.INNClient;*/
+
+/*SELECT s.Seller, sg.DateStart
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller AND sg.DateStart BETWEEN '2007-11-10' AND '2007-11-12' */
+
+/*SELECT sg.Goods, ROUND(sg.CostUnit * sg.Count, 2)
+FROM SallerGoods sg
+WHERE (sg.CostUnit * sg.Count) > 1000*/
+
+/*SELECT SUM(cg.CostUnit * cg.Count) AS [Cумма прогданного товара]
+FROM ClientGoods cg, Client c
+WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;*/
+
+
+
+SELECT Goods AS 'Товар', AVG (CostUnit * Count) AS 'Средняя цена'
+FROM ClientGoods cg, Client c
+WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;
+
+
+
+
 
 1. Показать все значения Т1.
 2. Показать все должности, которые существуют в организации.

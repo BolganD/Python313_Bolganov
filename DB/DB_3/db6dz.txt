@@ -1,0 +1,127 @@
+1. 
+SELECT COUNT(c.Client) 
+FROM Client c
+
+2.
+SELECT COUNT(s.Client) 
+FROM Seller s
+WHERE s.Status IS 'посредник'
+
+3.
+SELECT AVG(CostUnit * Count) AS [Средняя сумма сделки]
+FROM ClientGoods
+
+4.
+SELECT SUM(sg.CostUnit) AS [Общая сумма проданных товаров]
+FROM SallerGoods sg
+
+5.
+SELECT c.Client AS [Закупщик], MAX(cg.Count) AS [Макс. кол-во закупленного товара]
+FROM ClientGoods cg, Client c
+WHERE cg.INNClient=c.INNClient
+
+6.
+SELECT c.Client AS [Закупщик], MIN(cg.CostUnit) AS [Мин. сумма закупленного товара]
+FROM ClientGoods cg, Client c
+WHERE cg.INNClient=c.INNClient
+
+7.
+SELECT SUM(cg.CostUnit * cg.Count) AS [Cумма прогданного товара]
+FROM ClientGoods cg, Client c
+WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;
+
+8.
+SELECT SUM(sg.Count)
+FROM SallerGoods sg
+WHERE sg.Goods LIKE '%Вафли%'
+
+9.
+SELECT AVG(sg.CostUnit)
+FROM SallerGoods sg, ClientGoods cg
+WHERE sg.Goods LIKE '%масло подсолнечное%' AND cg.ID=sg.ID
+
+10.
+SELECT SUM(sg.CostUnit * sg.Count)
+FROM SallerGoods sg
+WHERE sg.Goods LIKE '%Яблоки%'
+
+11.
+SELECT COUNT(sg.Count)
+FROM SallerGoods sg, Client c, ClientGoods cg
+WHERE sg.Goods LIKE '%Картофель%' AND c.Status LIKE 'кафе'
+AND sg.ID=cg.ID AND cg.INNClient=c.INNClient
+
+12.
+SELECT COUNT(sg.Count)
+FROM SallerGoods sg, Client c, ClientGoods cg
+WHERE sg.Goods LIKE '%Перец черный молотый%' AND
+sg.ID=cg.ID AND cg.INNClient=c.INNClient
+
+13.
+SELECT COUNT(DISTINCT sg.Goods)
+FROM SallerGoods sg, Client c, ClientGoods cg
+WHERE sg.ID=cg.ID AND cg.INNClient=c.INNClient
+
+14.
+SELECT MIN(CostUnit), Goods
+FROM SallerGoods
+
+15.
+SELECT MIN(CostUnit * Count)
+FROM ClientGoods
+
+16.
+SELECT MAX(cg.CostUnit * Count)
+FROM ClientGoods cg, Client c
+WHERE c.Status LIKE 'магазин'
+
+17.
+SELECT COUNT(c.Client)
+FROM Client c
+
+18.
+SELECT MIN(cg.CostUnit * cg.Count)
+FROM ClientGoods cg, SallerGoods sg, Seller s
+WHERE cg.ID=sg.ID AND sg.INNSeller=s.INNSeller AND s.Status LIKE 'производитель'
+
+19.
+SELECT AVG(cg.CostUnit)
+FROM ClientGoods cg, SallerGoods sg
+WHERE cg.ID=sg.ID AND sg.Goods LIKE '%Чай%'
+
+20.
+SELECT MAX(sg.CostUnit * sg.Count)
+FROM Client c, ClientGoods cg, SallerGoods sg
+WHERE cg.ID=sg.ID AND c.INNClient=cg.INNClient AND c.Status LIKE '%посредник%'
+
+21.
+SELECT MIN(sg.CostUnit * sg.Count)
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller AND s.Status LIKE '%посредник%'
+
+22.
+SELECT COUNT(DISTINCT sg.Goods)
+FROM SallerGoods sg, Seller s
+WHERE sg.INNSeller=s.INNSeller AND s.Status LIKE 'производитель'
+
+23.
+SELECT COUNT(DISTINCT sg.Goods)
+FROM SallerGoods sg, Seller s
+WHERE sg.Goods LIKE '%Печенье%'
+
+24.
+SELECT MAX(cg.CostUnit * cg.Count)
+FROM ClientGoods cg
+
+25.
+SELECT AVG((sg.CostUnit * sg.Count) - (cg.CostUnit * cg.Count))
+FROM ClientGoods cg, SallerGoods sg, Client c, Seller s
+WHERE c.INNClient=cg.INNClient AND cg.ID=sg.ID 
+AND sg.INNSeller=s.INNSeller AND sg.Goods LIKE '%масло%'
+
+26.
+SELECT COUNT(DISTINCT c.Client)
+FROM ClientGoods cg, SallerGoods sg, Client c, Seller s
+WHERE c.INNClient=cg.INNClient AND cg.ID=sg.ID 
+AND sg.INNSeller=s.INNSeller AND c.Status LIKE 'посредник' AND
+s.Status LIKE 'производитель'

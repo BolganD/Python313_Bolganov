@@ -6800,7 +6800,7 @@ import sqlite3
 #     cur.execute('DROP TABLE users')
 
 
-with sqlite3.connect('users.db') as con:
+with sqlite3.connect('db_4.db') as con:
     cur = con.cursor()
     # cur.execute('''
     # CREATE TABLE IF NOT EXISTS person(
@@ -6823,5 +6823,23 @@ with sqlite3.connect('users.db') as con:
     # RENAME COLUMN address TO home_address;
     # ''')
     cur.execute('''
-    DROP TABLE person_table
+    SELECT *
+    FROM Ware
+    ORDER BY Price DESC
+    LIMIT 2, 5;
     ''')
+
+    # res = cur.fetchall()
+    # print(res)
+
+    # for res in cur:
+    #     print(res)
+
+    res =cur.fetchone()  # первая запись
+    print(res)
+
+    res1 = cur.fetchmany(2)
+    print(res1)
+
+    res2 = cur.fetchall()
+    print(res)
