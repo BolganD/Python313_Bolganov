@@ -40,6 +40,21 @@ MAX
 GROUP BY (группировать по)
 HAVING (условие)
 
+FOREIGN KEY (столбец 1, столбец N) - внешний ключ
+REFERENCES имя таблицы () - куда ссылается ключ
+ON UPDATE
+ON DELETE
+
+CASCADE - автоматически удаляет или изменяет строки из зависимой таблицы при удалении или изменении связанных строк
+
+SET NULL - при удалении или обновлении связанной строки из главной таблицы устанавливает для столбца внешнего ключа значение NULL
+
+SET DEFAULT - при удалении строки из главной таблицы устанавливает для столбца внешнего ключа значение по цмолчанию
+
+RESTRICT (NO ACTION) - отклоняет удаление или изменение строк в главной таблице при наличии связанных строк в зависимой таблице
+
+
+
 
 
 /*SELECT s.Seller, sg.Goods
@@ -67,6 +82,23 @@ WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;*/
 SELECT Goods AS 'Товар', AVG (CostUnit * Count) AS 'Средняя цена'
 FROM ClientGoods cg, Client c
 WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;
+
+
+
+Создание таблиц:
+
+CREATE TABLE companies(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+);
+
+CREATE TABLE users(
+             id INTEGER PRIMARY KEY AUTOINCREMENT,
+             name TEXT NOT NULL,
+             age INTEGER,
+             company_id INTEGER,
+             FOREIGN KEY (company_id) REFERENCES companies (id) 
+);
 
 
 

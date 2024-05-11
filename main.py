@@ -6781,7 +6781,6 @@ import math
 # model
 
 
-import sqlite3
 
 
 # con = sqlite3.connect('profile.db')
@@ -6791,17 +6790,17 @@ import sqlite3
 
 # with sqlite3.connect('profile.db') as con:
 #     cur = con.cursor()
-#     # cur.execute('''CREATE TABLE IF NOT EXISTS users(
-#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     # name TEXT NOT NULL,
-#     # summa REAL,
-#     # date TEXT
-#     # )''')
+#     cur.execute('''CREATE TABLE IF NOT EXISTS users(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     summa REAL,
+#     date TEXT
+#     )''')
 #     cur.execute('DROP TABLE users')
 
-
-with sqlite3.connect('db_4.db') as con:
-    cur = con.cursor()
+#
+# with sqlite3.connect('db_4.db') as con:
+#     cur = con.cursor()
     # cur.execute('''
     # CREATE TABLE IF NOT EXISTS person(
     # id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -6822,12 +6821,12 @@ with sqlite3.connect('db_4.db') as con:
     # ALTER TABLE person_table
     # RENAME COLUMN address TO home_address;
     # ''')
-    cur.execute('''
-    SELECT *
-    FROM Ware
-    ORDER BY Price DESC
-    LIMIT 2, 5;
-    ''')
+    # cur.execute('''
+    # SELECT *
+    # FROM Ware
+    # ORDER BY Price DESC
+    # LIMIT 2, 5;
+    # ''')
 
     # res = cur.fetchall()
     # print(res)
@@ -6835,11 +6834,17 @@ with sqlite3.connect('db_4.db') as con:
     # for res in cur:
     #     print(res)
 
-    res =cur.fetchone()  # первая запись
-    print(res)
+    # res =cur.fetchone()  # первая запись
+    # print(res)
+    #
+    # res1 = cur.fetchmany(2)
+    # print(res1)
+    #
+    # res2 = cur.fetchall()
+    # print(res)
 
-    res1 = cur.fetchmany(2)
-    print(res1)
 
-    res2 = cur.fetchall()
-    print(res)
+import sqlite3
+with sqlite3.connect('dz42.db') as con:
+    cur = con.cursor()
+
