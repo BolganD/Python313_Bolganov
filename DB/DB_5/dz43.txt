@@ -1,0 +1,75 @@
+1.
+SELECT z.*
+FROM (Zakaz z INNER JOIN Klient k ON k.ID_KL=z.ID_KL) 
+INNER JOIN Prodaves p ON k.ID_Pr=p.ID_Pr;
+
+
+2.
+SELECT k.Name_KL, AVG(z.Cena_Dostavki), 'few'
+FROM Zakaz z, Klient k
+WHERE k.ID_KL=z.ID_KL
+GROUP BY k.Name_KL
+HAVING AVG(z.Cena_Dostavki) >=
+            (SELECT AVG(z.Cena_Dostavki)
+            FROM Zakaz z
+            )
+
+UNION    
+
+SELECT k.Name_KL, AVG(z.Cena_Dostavki), 'lot'
+FROM Zakaz z, Klient k
+WHERE k.ID_KL=z.ID_KL
+GROUP BY k.Name_KL
+HAVING AVG(z.Cena_Dostavki) <=
+            (SELECT AVG(z.Cena_Dostavki)
+            FROM Zakaz z
+            )
+            
+
+
+3.
+SELECT *
+FROM Zakaz z LEFT JOIN Klient k ON z.ID_KL=k.ID_KL LEFT JOIN Prodaves p ON k.ID_Pr=p.ID_Pr
+
+
+4.
+SELECT k.Name_KL, k.Discoun, p.Name_Pr
+From Prodaves p INNER JOIN Klient k
+ON k.ID_Pr=p.ID_Pr
+
+
+5.
+SELECT DISTINCT k.City_KL
+FROM Klient K
+
+UNION
+
+SELECT DISTINCT p.City_Pr
+FROM Prodaves p
+
+
+6.
+SELECT k.*, z.*
+From Klient k LEFT JOIN Zakaz z ON k.ID_KL=z.ID_KL
+
+
+7.
+SELECT p.Name_Pr, p.ID_Pr
+FROM Prodaves p
+WHERE EXISTS
+            (SELECT k.ID_Pr
+            FROM Klient k
+            WHERE p.City_Pr=k.City_KL AND p.ID_Pr<>k.ID_Pr
+            )
+
+
+8.
+SELECT p.City_Pr, p.Name_Pr
+FROM Prodaves p
+WHERE p.City_Pr LIKE 'London'
+
+UNION
+
+SELECT k.City_KL, k.Name_KL
+FROM Klient k
+WHERE k.City_KL LIKE 'London'
