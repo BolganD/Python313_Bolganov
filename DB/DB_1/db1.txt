@@ -1,0 +1,126 @@
+SELECT Doljnost
+FROM T1;
+
+SELECT Doljnost, FName, ZP
+FROM T1;
+
+SELECT DISTINCT ZP
+FROM T1;
+
+SELECT *
+FROM T1
+WHERE ZP BETWEEN 1040 AND 2000
+
+% - любое кол-во символов
+_ - один любой символ
+GLOB - регулярное_выражение
+	* - любое кол-во символов
+	? - соответствует одному повтроению
+	. - один любой символ
+	[символы]
+	[начальный_символ-конечный_символ]
+	[^0-9] - все кроме заданных значений
+IS [NOT] NULL
+
+DELETE
+
+UPDATE
+SET
+
+
+декартовое произведение (все возможные комбинации одной таблицы с каждой строкой друго таблицы)
+
+функции агрегирования
+SUM (только числовые типы)
+AVG (только числовые типы)
+COUNT 
+MIN
+MAX
+
+GROUP BY (группировать по)
+HAVING (условие)
+
+FOREIGN KEY (столбец 1, столбец N) - внешний ключ
+REFERENCES имя таблицы () - куда ссылается ключ
+ON UPDATE
+ON DELETE
+
+CASCADE - автоматически удаляет или изменяет строки из зависимой таблицы при удалении или изменении связанных строк
+
+SET NULL - при удалении или обновлении связанной строки из главной таблицы устанавливает для столбца внешнего ключа значение NULL
+
+SET DEFAULT - при удалении строки из главной таблицы устанавливает для столбца внешнего ключа значение по цмолчанию
+
+RESTRICT (NO ACTION) - отклоняет удаление или изменение строк в главной таблице при наличии связанных строк в зависимой таблице
+
+
+
+
+
+/*SELECT s.Seller, sg.Goods
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller*/
+/*
+SELECT c.Client, s.Seller
+FROM Seller s, SallerGoods sg, Client c, ClientGoods cg
+WHERE s.INNSeller=sg.INNSeller AND cg.ID=sg.ID and c.INNClient=cg.INNClient;*/
+
+/*SELECT s.Seller, sg.DateStart
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller AND sg.DateStart BETWEEN '2007-11-10' AND '2007-11-12' */
+
+/*SELECT sg.Goods, ROUND(sg.CostUnit * sg.Count, 2)
+FROM SallerGoods sg
+WHERE (sg.CostUnit * sg.Count) > 1000*/
+
+/*SELECT SUM(cg.CostUnit * cg.Count) AS [Cумма прогданного товара]
+FROM ClientGoods cg, Client c
+WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;*/
+
+
+
+SELECT Goods AS 'Товар', AVG (CostUnit * Count) AS 'Средняя цена'
+FROM ClientGoods cg, Client c
+WHERE c.Status LIKE 'магазин' AND c.INNClient=cg.INNClient;
+
+
+
+Создание таблиц:
+
+CREATE TABLE companies(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+);
+
+CREATE TABLE users(
+             id INTEGER PRIMARY KEY AUTOINCREMENT,
+             name TEXT NOT NULL,
+             age INTEGER,
+             company_id INTEGER,
+             FOREIGN KEY (company_id) REFERENCES companies (id) 
+);
+
+
+
+
+
+1. Показать все значения Т1.
+2. Показать все должности, которые существуют в организации.
+3. Показать атрибуты с фамилиями и зарплатой.
+4. Написать запрос, который выводит таблицу в следующем порядке: должность, фамилия, зарплата.
+5. Какие зарплаты есть на фирме
+6. Показать фамилии и опыт работы только тех сотрудников, опыт работы которых более 5 лет.
+7. Вывести только фамилии и зарплату тех сотрудников, которые работают более 3 лет и имеют зарплату менее 700.
+8. Составить список всех менеджеров и директоров.
+9. Написать запрос который выводит фамилии менеджеров зарплата которых меньше 2000 и опыт работы больше 3 лет.
+10. Перечислить весь персонал с зарплатой от 1000 до 2100.
+11. Вывести все поля сотрудников, фамилии которых начинаются на “Пе”.
+12. Вывести фамилии которые заканчиваются на –ов.
+13. Вывести все поля сотрудников, в фамилии которых есть буквы «П» или «Е». 
+14. Вывести фамилии сотрудников которые начинаются с A по Л (включительно).
+15. Написать запрос который выводит фамилии и опыт работы тех сотрудников, зарплата которых не определена.
+16. Определить диапазон зарплат менеджеров.
+17. Написать запрос, который выводит зарплату всех Операторов, опыт работы которых меньше 3 лет.
+18. Составить список всех Секретарей и Операторов, опыт работы которых более 2 лет.
+
+
